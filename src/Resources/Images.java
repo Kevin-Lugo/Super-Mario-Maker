@@ -48,6 +48,9 @@ public class Images {
 
 
     public static BufferedImage[] goomba;
+    // new Enemy
+    public static BufferedImage[] skeleton;
+    public static BufferedImage[] skeletonDies;
 
 
     public static BufferedImage title;
@@ -73,6 +76,7 @@ public class Images {
     private SpriteSheet goombaSpriteSheet;
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
+    private SpriteSheet enemySpriteSheet;
 
     public Images() {
 
@@ -101,6 +105,8 @@ public class Images {
         marioBigJumpLeft = new BufferedImage[5];
         marioBigJumpRight = new BufferedImage[5];
         goomba = new BufferedImage[2];
+        skeleton = new BufferedImage[3];
+        skeletonDies = new BufferedImage[2];
 
 
 
@@ -116,6 +122,7 @@ public class Images {
             goombaSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/goombaSprite.png")));
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
+            enemySpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet.png")));
 
 
             //Images
@@ -309,6 +316,13 @@ public class Images {
             goomba[0]=goombaSpriteSheet.crop(119,40,162,162);
             goomba[1]= goombaSpriteSheet.crop(329,40,162,162);
             goombaDies=goombaSpriteSheet.crop(539,100,162,81);
+            
+            //new Enemy
+             skeleton[0] = enemySpriteSheet.crop(282,168, 27, 36);
+             skeleton[1] = enemySpriteSheet.crop(310, 170, 26, 34);
+             skeleton[2] = enemySpriteSheet.crop(201,168,29,37);
+             skeletonDies[0] = enemySpriteSheet.crop(255, 178, 27, 28);
+             skeletonDies[1] = enemySpriteSheet.crop(230, 186, 26, 19);
 
 
         }catch (IOException e) {
