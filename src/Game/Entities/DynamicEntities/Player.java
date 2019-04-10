@@ -2,6 +2,8 @@ package Game.Entities.DynamicEntities;
 
 import Game.Entities.EntityBase;
 import Game.Entities.StaticEntities.BaseStaticEntity;
+import Game.Entities.StaticEntities.BoundBlock;
+import Game.GameStates.State;
 import Main.Handler;
 import Resources.Animation;
 
@@ -97,6 +99,11 @@ public class Player extends BaseDynamicEntity {
                 falling = false;
                 velY=0;
             }
+            if(brick instanceof BoundBlock) {
+            	if(marioBottomBounds.intersects(brickTopBounds)) {
+            		State.setState(handler.getGame().gameOverState);
+            	}
+            }
         }
 
         for (BaseDynamicEntity enemy : enemies) {
@@ -152,6 +159,7 @@ public class Player extends BaseDynamicEntity {
             Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
             if (marioBounds.intersects(enemyBounds)) {
                 marioDies = true;
+                State.setState(handler.getGame().gameOverState);
                 break;
             }
         }

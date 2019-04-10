@@ -31,7 +31,7 @@ public class Handler {
 
     public Handler(){
 
-        height=2*(DEFAULTHEIGHT/3)  ;
+        height= 700;      //2*(DEFAULTHEIGHT/3)  ;
         width =height;
 
     }
