@@ -87,6 +87,13 @@ public class MenuState extends State {
 				uiManager = new UIManager(handler);
 				handler.getMouseManager().setUimanager(uiManager);
 
+				// 1 Player
+//				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "Single Player" , () -> {
+//					if(!handler.isInMap()) {
+//						mode = "Selecting";
+//						}
+//				}, handler,Color.BLACK));
+
 				//New Map
 				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "New Map", () -> {
 					if(!handler.isInMap()) {

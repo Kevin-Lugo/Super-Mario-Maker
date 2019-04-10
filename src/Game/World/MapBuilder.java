@@ -21,6 +21,7 @@ public class MapBuilder {
 	public static int misteryBlock = new Color(255,216,0).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
+	public static int skeleton = new Color( 50,15,1).getRGB();
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
