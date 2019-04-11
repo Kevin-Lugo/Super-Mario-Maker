@@ -77,6 +77,7 @@ public class Map {
             }
         }
         handler.getMario().drawMario(g2);
+       
         if(this.listener != null && MapBuilder.mapDone) {
             this.listener.render(g2);
             this.hand.render(g2);
