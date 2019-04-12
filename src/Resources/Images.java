@@ -60,9 +60,11 @@ public class Images {
 
     public static BufferedImage testMap;
     public static BufferedImage testMaptwo;
-
+    
+    public static BufferedImage[] powerUpBlock;
     public static BufferedImage breakBlock;
     public static BufferedImage misteryBlock;
+    public static BufferedImage noteBlock;
     public static BufferedImage surfaceBlock;
     public static BufferedImage boundBlock;
     public static BufferedImage mushroom;
@@ -77,6 +79,7 @@ public class Images {
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
     private SpriteSheet enemySpriteSheet;
+    
 
     public Images() {
 
@@ -107,6 +110,8 @@ public class Images {
         goomba = new BufferedImage[2];
         skeleton = new BufferedImage[3];
         skeletonDies = new BufferedImage[2];
+        
+        powerUpBlock = new BufferedImage[4];
 
 
 
@@ -118,7 +123,7 @@ public class Images {
             backgroundSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/backgroundSheet.png")));
             interactableSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/interactablesSheet.png")));
             playerSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/marioSNESSheet.png")));
-            blockSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/blocksSheet.png")));
+            blockSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/blockSprite.png")));
             goombaSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/goombaSprite.png")));
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
@@ -306,8 +311,14 @@ public class Images {
             boundBlock = interactableSpriteSheet.crop(12,73,16,16);
             misteryBlock = interactableSpriteSheet.crop(32,93,16,16);
             surfaceBlock = interactableSpriteSheet.crop(112,93,16,16);
+            noteBlock = blockSpriteSheet.crop(52, 132, 16, 16);
             //breakBlock = blockSpriteSheet.crop(272,112,16,16);
             breakBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/brick.png"));
+            
+            powerUpBlock[0] = blockSpriteSheet.crop(13, 171, 17, 17);
+            powerUpBlock[1] = blockSpriteSheet.crop(33, 171, 17, 17);
+            powerUpBlock[2] = blockSpriteSheet.crop(53, 171, 17, 17);
+            powerUpBlock[3] = blockSpriteSheet.crop(72, 171, 17, 17);
 
             //items
             mushroom = interactableSpriteSheet.crop(112,34,16,16);

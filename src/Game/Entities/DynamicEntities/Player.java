@@ -108,14 +108,21 @@ public class Player extends BaseDynamicEntity {
 
         for (BaseDynamicEntity enemy : enemies) {
             Rectangle enemyTopBounds = enemy.getTopBounds();
-            if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item)) {
+            if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item) && !(enemy instanceof PowerUpBlock)) {
                 if(!enemy.ded) {
                     handler.getGame().getMusicHandler().playStomp();
                 }
                 enemy.kill();
                 falling=false;
                 velY=0;
-
+            }
+            
+            if(enemy instanceof PowerUpBlock) {
+            	if(marioBottomBounds.intersects(enemyTopBounds)) {
+            		 mario.setY(enemy.getY() - mario.getDimension().height + 1);
+                     falling = false;
+                     velY=0;
+            	}
             }
         }
     }
@@ -123,6 +130,7 @@ public class Player extends BaseDynamicEntity {
     public void checkTopCollisions() {
         Player mario = this;
         ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
+        ArrayList<BaseDynamicEntity> enemies =  handler.getMap().getEnemiesOnMap();
 
         Rectangle marioTopBounds = mario.getTopBounds();
         for (BaseStaticEntity brick : bricks) {
@@ -131,6 +139,16 @@ public class Player extends BaseDynamicEntity {
                 velY=0;
                 mario.setY(brick.getY() + brick.height);
             }
+        }
+        for (BaseDynamicEntity block : enemies) {
+        	Rectangle blockBottomBounds = block.getBottomBounds();
+        	if(block instanceof PowerUpBlock) {
+        		if (marioTopBounds.intersects(blockBottomBounds)) {
+        			velY=0;
+                    mario.setY(block.getY() + block.height);
+                    mario.isBig = true;
+        		}
+        	}
         }
     }
 
@@ -157,13 +175,22 @@ public class Player extends BaseDynamicEntity {
 
         for(BaseDynamicEntity enemy : enemies){
             Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
-            if (marioBounds.intersects(enemyBounds)) {
+            if (marioBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock)) {
             	if(!isBig) {
             		marioDies = true;
                 	State.setState(handler.getGame().gameOverState);
                 }
                 isBig = false;
                 break;
+            }
+            if(enemy instanceof PowerUpBlock) {
+            	if(marioBounds.intersects(enemyBounds)) {
+            		 velX=0;
+                     if(toRight)
+                         mario.setX(enemy.getX() - mario.getDimension().width);
+                     else
+                         mario.setX(enemy.getX() + enemy.getDimension().width);
+            	}
             }
         }
 

@@ -70,6 +70,9 @@ public class Map {
             else if(entity instanceof Skeleton && !entity.ded){
                 g2.drawImage(((Skeleton)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
             }
+            else if(entity instanceof PowerUpBlock){
+                g2.drawImage(((PowerUpBlock)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+            }
             else if(entity instanceof UIPointer ){
                 ((UIPointer) entity).render(g2);
             }else {
