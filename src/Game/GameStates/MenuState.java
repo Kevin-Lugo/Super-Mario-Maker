@@ -305,12 +305,12 @@ public class MenuState extends State {
 			colorSelected = MapBuilder.skeleton;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,.96078431f,.96078431f,.8627451f), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,.72941176f,.02352941f,.83529412f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.noteBlock;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,.72941176f,.02352941f,.83529412f), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,.41176471f,.70588235f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.powerUpBlock;
 		}
@@ -349,7 +349,9 @@ public class MenuState extends State {
 					"5 -> Bounds Block (Black)\n" +
 					"6 -> Mushroom (Purple)\n" +
 					"7 -> Goomba (Brown)\n" + 
-					"8 -> Skeleton (Gray)");
+					"8 -> Skeleton (Gray)\n" +
+					"9 -> Note Block (Blue)\n" + 
+					"P -> Power Up Block (Pink)");
 		} else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && MultiP) { 					// MENU FOR MULTIPLAYER
 			JOptionPane.showMessageDialog(display.getFrame(), "Number key <-> Color Mapping: \n" +
 					"0 -> Erase \n" +

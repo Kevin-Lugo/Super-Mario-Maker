@@ -5,6 +5,7 @@ import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Mushroom;
 import Game.Entities.DynamicEntities.PowerUpBlock;
+import Game.Entities.DynamicEntities.Skeleton;
 import Game.Entities.StaticEntities.*;
 import Main.Handler;
 import Resources.Images;
@@ -20,8 +21,8 @@ public class MapBuilder {
 	public static int surfaceBlock = new Color(255,106,0).getRGB();
 	public static int breakBlock = new Color(0,38,255).getRGB();
 	public static int misteryBlock = new Color(255,216,0).getRGB();
-	public static int powerUpBlock = new Color(0,0,255).getRGB();
-	public static int noteBlock = new Color(75,0,30).getRGB();
+	public static int powerUpBlock = new Color(255,105,180).getRGB();
+	public static int noteBlock = new Color(0,0,255).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
 	public static int skeleton = new Color( 50,15,1).getRGB();
@@ -58,6 +59,9 @@ public class MapBuilder {
 				}else if(currentPixel == goomba){
 					BaseDynamicEntity Goomba = new Goomba(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Goomba);
+				}else if(currentPixel == skeleton){
+					BaseDynamicEntity Skeleton = new Skeleton(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(Skeleton);
 				}else if(currentPixel == powerUpBlock){
 					BaseDynamicEntity PowerUpBlock = new PowerUpBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(PowerUpBlock);
