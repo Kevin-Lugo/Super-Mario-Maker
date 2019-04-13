@@ -29,6 +29,7 @@ import java.util.Random;
 public class MenuState extends State {
 	public boolean singleP = false;
 	public boolean multiP = false;
+	private int Screencount =0;
 
 	public UIManager uiManager;
 	private int background;
@@ -243,6 +244,24 @@ public class MenuState extends State {
 		}else{
 			renderNewScreen();
 		}
+
+		if( multiP && Screencount == 0 && !creatingMap ) {
+			
+			 display = new DisplayScreen("Player 2" , handler.getWidth(), handler.getHeight());
+			 display.getFrame().setLocation(700, 100);
+//			 g.setColor(Color.GREEN);
+//				g.drawImage(Images.backgrounds[background], 0, 0, handler.getWidth(), handler.getHeight(), null);
+//				g.drawImage(Images.title, 0, 0, handler.getWidth(), handler.getHeight(), null);
+//				uiManager.Render(g);
+			 display.getCanvas().setBackground(Color.WHITE);
+		        display.getFrame().addKeyListener(keyManager);
+		        display.getFrame().addMouseListener(mouseManager);
+		        display.getFrame().addMouseMotionListener(mouseManager);
+		        display.getCanvas().addMouseListener(mouseManager);
+		        display.getCanvas().addMouseMotionListener(mouseManager);
+		    
+			Screencount++;
+			}
 	}
 
 	private void initNew(String title,Handler handler){
