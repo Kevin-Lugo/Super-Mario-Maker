@@ -102,6 +102,11 @@ public class Images {
 		marioSmallWalkRight = new BufferedImage[2];
 		marioSmallJumpLeft = new BufferedImage[4];
 		marioSmallJumpRight = new BufferedImage[4];
+		
+		luigiSmallWalkLeft = new BufferedImage[2];
+		luigiSmallWalkRight = new BufferedImage[2];
+		luigiSmallJumpLeft = new BufferedImage[4];
+		luigiSmallJumpRight = new BufferedImage[4];
 		item = new BufferedImage[19];
 		enemy = new BufferedImage[9];
 		hitWall = new BufferedImage[44];
@@ -117,6 +122,13 @@ public class Images {
 		marioBigRunRight = new BufferedImage[2];
 		marioBigJumpLeft = new BufferedImage[5];
 		marioBigJumpRight = new BufferedImage[5];
+		
+		luigiBigWalkLeft = new BufferedImage[2];
+		luigiBigWalkRight = new BufferedImage[2];
+		luigiBigRunLeft = new BufferedImage[2];
+		luigiBigRunRight = new BufferedImage[2];
+		luigiBigJumpLeft = new BufferedImage[5];
+		luigiBigJumpRight = new BufferedImage[5];
 		goomba = new BufferedImage[2];
 		skeleton = new BufferedImage[3];
 		skeletonDies = new BufferedImage[2];
