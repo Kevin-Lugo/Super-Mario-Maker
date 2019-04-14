@@ -66,12 +66,12 @@ public class GameSetUp implements Runnable {
         keyManager = new KeyManager();
         mouseManager = new MouseManager();
         initialmouseManager = mouseManager;
-//        musicHandler = new MusicHandler(handler);
+        musicHandler = new MusicHandler(handler);
         handler.setCamera(new Camera());
     }
 
     private void init(){
-    	this.title = "Mario Maker Pro TM. (CR Nintendo)";
+    	
         display = new DisplayScreen(title, handler.width, handler.height);
         display.getFrame().addKeyListener(keyManager);
         display.getFrame().addMouseListener(mouseManager);
@@ -82,7 +82,7 @@ public class GameSetUp implements Runnable {
 
         Images img = new Images();
 
-       // musicHandler.restartBackground();
+        musicHandler.restartBackground();
 
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
@@ -92,8 +92,8 @@ public class GameSetUp implements Runnable {
         State.setState(menuState);
     }
     private void Screen2(){
-    	   this.title = "Player 2";
-    	   display2 = new DisplayScreen(title, handler.width, handler.height);
+    	  
+    	   display2 = new DisplayScreen("Player 2", handler.width, handler.height);
     	   display2.getFrame().setVisible(false);
            display2.getFrame().addKeyListener(keyManager);
            display2.getFrame().addMouseListener(mouseManager);
