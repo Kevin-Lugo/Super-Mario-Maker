@@ -7,6 +7,7 @@ import Game.World.MapBuilder;
 import Input.KeyManager;
 import Input.MouseManager;
 import Main.Handler;
+import Main.GameSetUp;
 import Resources.Images;
 import Display.UI.UIAnimationButton;
 import Display.UI.UIImageButton;
@@ -244,26 +245,15 @@ public class MenuState extends State {
 		}else{
 			renderNewScreen();
 		}
-
-		if( multiP && Screencount == 0 && !creatingMap ) {
-			
-			 display = new DisplayScreen("Player 2" , handler.getWidth(), handler.getHeight());
-			 display.getFrame().setLocation(700, 100);
-//			 g.setColor(Color.GREEN);
-//				g.drawImage(Images.backgrounds[background], 0, 0, handler.getWidth(), handler.getHeight(), null);
-//				g.drawImage(Images.title, 0, 0, handler.getWidth(), handler.getHeight(), null);
-//				uiManager.Render(g);
-			 display.getCanvas().setBackground(Color.WHITE);
-		        display.getFrame().addKeyListener(keyManager);
-		        display.getFrame().addMouseListener(mouseManager);
-		        display.getFrame().addMouseMotionListener(mouseManager);
-		        display.getCanvas().addMouseListener(mouseManager);
-		        display.getCanvas().addMouseMotionListener(mouseManager);
-		    
+		if( multiP && Screencount == 0 && !creatingMap) {
+			handler.getGame().display.getFrame().setLocation(0, 100);
+			handler.getGame().display2.getFrame().setVisible(true);
 			Screencount++;
-			}
+		}
+		
+		
 	}
-
+	
 	private void initNew(String title,Handler handler){
 		display = new DisplayScreen(title + "              (H for Mapping)", DisplayWidth, DiplayHeight);
 		display.getFrame().addKeyListener(keyManager);

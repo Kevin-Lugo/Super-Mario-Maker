@@ -28,6 +28,7 @@ import java.awt.image.BufferStrategy;
 
 public class GameSetUp implements Runnable {
     public DisplayScreen display;
+    public DisplayScreen display2;
     public String title;
 
     private boolean running = false;
@@ -35,6 +36,8 @@ public class GameSetUp implements Runnable {
     public static boolean threadB;
 
     private BufferStrategy bs;
+    private BufferStrategy bs2;
+    
     private Graphics g;
     public UIPointer pointer;
 
@@ -63,21 +66,23 @@ public class GameSetUp implements Runnable {
         keyManager = new KeyManager();
         mouseManager = new MouseManager();
         initialmouseManager = mouseManager;
-        musicHandler = new MusicHandler(handler);
+//        musicHandler = new MusicHandler(handler);
         handler.setCamera(new Camera());
     }
 
     private void init(){
+    	this.title = "Mario Maker Pro TM. (CR Nintendo)";
         display = new DisplayScreen(title, handler.width, handler.height);
         display.getFrame().addKeyListener(keyManager);
         display.getFrame().addMouseListener(mouseManager);
         display.getFrame().addMouseMotionListener(mouseManager);
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
+       
 
         Images img = new Images();
 
-        musicHandler.restartBackground();
+       // musicHandler.restartBackground();
 
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
@@ -86,6 +91,31 @@ public class GameSetUp implements Runnable {
 
         State.setState(menuState);
     }
+    private void Screen2(){
+    	   this.title = "Player 2";
+    	   display2 = new DisplayScreen(title, handler.width, handler.height);
+    	   display2.getFrame().setVisible(false);
+           display2.getFrame().addKeyListener(keyManager);
+           display2.getFrame().addMouseListener(mouseManager);
+           display2.getFrame().addMouseMotionListener(mouseManager);
+           display2.getCanvas().addMouseListener(mouseManager);
+           display2.getCanvas().addMouseMotionListener(mouseManager);
+           display2.getFrame().setLocation(700, 100);
+
+           Images img2 = new Images();
+
+
+           gameState = new GameState(handler);
+           menuState = new MenuState(handler);
+           pauseState = new PauseState(handler);
+           gameOverState = new GameOverState(handler);
+
+           State.setState(menuState);
+          
+             
+    	
+    }
+    
 
     public void reStart(){
         gameState = new GameState(handler);
@@ -104,6 +134,7 @@ public class GameSetUp implements Runnable {
 
         //initiallizes everything in order to run without breaking
         init();
+        Screen2();
 
         int fps = 60;
         double timePerTick = 1000000000 / fps;
@@ -124,6 +155,7 @@ public class GameSetUp implements Runnable {
                 //re-renders and ticks the game around 60 times per second
                 tick();
                 render();
+                render2();
                 ticks++;
                 delta--;
             }
@@ -141,9 +173,9 @@ public class GameSetUp implements Runnable {
         //checks for key types and manages them
         keyManager.tick();
 
-        if(musicHandler.ended()){
-            musicHandler.restartBackground();
-        }
+//        if(musicHandler.ended()){
+//            musicHandler.restartBackground();
+//        }
 
         //game states are the menus
         if(State.getState() != null)
@@ -197,6 +229,28 @@ public class GameSetUp implements Runnable {
         bs.show();
         g.dispose();
     }
+    private void render2(){
+        bs = display2.getCanvas().getBufferStrategy();
+
+        if(bs == null){
+            display2.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        g = bs.getDrawGraphics();
+        //Clear Screen
+       // g.clearRect(0, 0,  handler.width, handler.height);
+
+        //Draw Here!
+        Graphics2D g2 = (Graphics2D) g.create();
+
+        if(State.getState() != null)
+            State.getState().render(g);
+
+        //End Drawing!
+        bs.show();
+        g.dispose();
+    }
+    
     public Map getMap() {
     	Map map = new Map(this.handler);
     	Images.makeMap(0, MapBuilder.pixelMultiplier, 31, 200, map, this.handler);
