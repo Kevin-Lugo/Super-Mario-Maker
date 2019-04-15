@@ -29,7 +29,7 @@ import java.util.Random;
  */
 public class MenuState extends State {
 	public boolean singleP = false;
-	public boolean multiP = false;
+	public static boolean multiP = false;
 	private int Screencount =0;
 
 	public UIManager uiManager;
@@ -245,11 +245,11 @@ public class MenuState extends State {
 		}else{
 			renderNewScreen();
 		}
-		if( multiP && Screencount == 0 && !creatingMap) {
-			handler.getGame().display.getFrame().setLocation(0, 100);
-			handler.getGame().display2.getFrame().setVisible(true);
-			Screencount++;
-		}
+//		if( multiP && Screencount == 0 && !creatingMap) {
+//			handler.getGame().display.getFrame().setLocation(0, 100);
+//			handler.getGame().display2.getFrame().setVisible(true);
+//			Screencount++;
+//		}
 		
 		
 	}

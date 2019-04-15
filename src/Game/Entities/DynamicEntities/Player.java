@@ -13,6 +13,8 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Player extends BaseDynamicEntity {
+	private boolean hit = false;
+	public boolean grabbed =false;
 
 	protected double velX,velY;
 
@@ -220,6 +222,13 @@ public class Player extends BaseDynamicEntity {
 	public double getVelY() {
 		return velY;
 	}
+	public boolean getHit() {
+		return this.hit;
+	}
+	public void setHit(Boolean hit) {
+		this.hit = hit;
+	}
+
 
 
 }
