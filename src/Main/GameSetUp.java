@@ -93,30 +93,7 @@ public class GameSetUp implements Runnable {
 
 		State.setState(menuState);
 	}
-//    private void Screen2(){
-//    	  
-//    	   display2 = new DisplayScreen("Player 2", handler.width, handler.height);
-//    	   display2.getFrame().setVisible(false);
-////           display2.getFrame().addKeyListener(keyManager);
-////           display2.getFrame().addMouseListener(mouseManager);
-////           display2.getFrame().addMouseMotionListener(mouseManager);
-////           display2.getCanvas().addMouseListener(mouseManager);
-////           display2.getCanvas().addMouseMotionListener(mouseManager);
-//           display2.getFrame().setLocation(700, 100);
-//
-//           Images img2 = new Images();
-//
-//
-//           gameState = new GameState(handler);
-//           menuState = new MenuState(handler);
-//           pauseState = new PauseState(handler);
-//           gameOverState = new GameOverState(handler);
-//
-//           State.setState(menuState);
-//          
-//             
-//    	
-//    }
+
 
 	public void reStart() {
 		gameState = new GameState(handler);
@@ -180,8 +157,8 @@ public class GameSetUp implements Runnable {
 
 		if (MenuState.multiP && Screencount == 0) {
 			display2 = new DisplayScreen("Player 2", handler.width, handler.height);
-			display2.getFrame().setLocation(700, 100);
-			handler.getGame().display.getFrame().setLocation(0, 100);
+			display2.getFrame().setLocation(handler.width, handler.getHeight()/2 -300);
+			handler.getGame().display.getFrame().setLocation(0, handler.getHeight()/2 -300);
 
 			Screencount++;
 		}
@@ -291,7 +268,7 @@ public class GameSetUp implements Runnable {
 					handler.getMap().drawMap2(gL2);
 				}
 			}
-
+				
 			// End Drawing!
 			bs.show();
 			bs2.show();
