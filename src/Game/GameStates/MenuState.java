@@ -27,9 +27,6 @@ import java.util.Random;
  * Created by AlexVR on 7/1/2018.
  */
 public class MenuState extends State {
-	public boolean singleP = false;
-	public static boolean multiP = false;
-	private int Screencount = 0;
 
 	public UIManager uiManager;
 	private int background;
@@ -84,7 +81,9 @@ public class MenuState extends State {
 				handler.getHeight() / 2 + (handler.getHeight() / 8), 128, 64, Images.butstart, () -> {
 					if (!handler.isInMap()) {
 						mode = "Select";
+						State.setState(handler.getGame().selectionState);
 					}
+					
 				}));
 	}
 
@@ -97,37 +96,7 @@ public class MenuState extends State {
 				mode = "Selecting";
 				uiManager = new UIManager(handler);
 				handler.getMouseManager().setUimanager(uiManager);
-				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-				// SINGLE PLAYER MENU
-
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
-						(handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "Single Player", () -> {
-							if (!handler.isInMap()) {
-								mode = "Selecting";
-								singleP = true;
-								uiManager.removeObsjects(uiManager.getObjects().get(0));
-							}
-							uiManager.removeObsjects(uiManager.getObjects().get(0));
-							displayoptions();
-						}, handler, Color.BLACK));
-
-				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-				// MULTIPLAYER MENU
-
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
-						(handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Multiplayer",
-						() -> {
-							if (!handler.isInMap()) {
-								mode = "Selecting";
-								multiP = true;
-								uiManager.removeObsjects(uiManager.getObjects().get(0));
-							}
-							uiManager.removeObsjects(uiManager.getObjects().get(0));
-							// New Map
-							displayoptions();
-						}, handler, Color.BLACK));
-				//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				displayoptions();
 
 			}
 			if (mode.equals("Selecting") && handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)
@@ -215,11 +184,6 @@ public class MenuState extends State {
 		} else {
 			renderNewScreen();
 		}
-//		if( multiP && Screencount == 0 && !creatingMap) {
-//			handler.getGame().display.getFrame().setLocation(0, 100);
-//			handler.getGame().display2.getFrame().setVisible(true);
-//			Screencount++;
-//		}
 
 	}
 
@@ -252,7 +216,7 @@ public class MenuState extends State {
 	private void tickNewScreen() {
 		// for the tin take each value and divide by 255.
 		// Ex for a red tint you wan the RGB : 255,0,0 so the tint is 1,0,0
-		if (singleP) {
+		if (SelectionState.singleP) {
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_0)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor, 1, 1, 1),
 						new Point(0, 0), "cursor1");
@@ -320,7 +284,7 @@ public class MenuState extends State {
 				colorSelected = MapBuilder.powerUpBlock;
 			}
 		}
-		if (multiP) {
+		if (SelectionState.multiP) {
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_0)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor, 1, 1, 1),
 						new Point(0, 0), "cursor1");
@@ -422,14 +386,14 @@ public class MenuState extends State {
 			JOptionPane.showMessageDialog(display.getFrame(),
 					"You cant have a map without at least a Mario and a floor right under him. (1 for Mario)");
 		}
-		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && singleP) {
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && SelectionState.singleP) {
 			JOptionPane.showMessageDialog(display.getFrame(),
 					"Number key <-> Color Mapping: \n" + "0 -> Erase \n" + "1 -> Mario (Red)\n"
 							+ "2 -> Break Block (Blue)\n" + "3 -> Mystery Block (Yellow)\n"
 							+ "4 -> Surface Block (Orange)\n" + "5 -> Bounds Block (Black)\n"
 							+ "6 -> Mushroom (Purple)\n" + "7 -> Goomba (Brown)\n" + "8 -> Skeleton (Gray)\n"
 							+ "9 -> Note Block (Blue)\n" + "P -> Power Up Block (Pink)");
-		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && multiP) { // MENU FOR MULTIPLAYER
+		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && SelectionState.multiP) { // MENU FOR MULTIPLAYER
 			JOptionPane.showMessageDialog(display.getFrame(),
 					"Number key <-> Color Mapping: \n" + "0 -> Erase \n" + "1 -> Mario (Red)\n"
 							+ "2 -> Break Block (Blue)\n" + "3 -> Mystery Block (Yellow)\n"

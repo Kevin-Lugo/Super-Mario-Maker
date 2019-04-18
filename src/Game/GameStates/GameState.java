@@ -29,7 +29,7 @@ public class GameState extends State {
         }
         handler.getMario().tick();
         
-        if( MenuState.multiP) {
+        if( SelectionState.multiP) {
         	handler.getLuigi().tick();
         }
         if(handler.getMap().getListener() != null && MapBuilder.mapDone) {

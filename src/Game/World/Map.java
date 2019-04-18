@@ -5,6 +5,7 @@ import Game.Entities.DynamicEntities.*;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.Wall;
 import Game.GameStates.MenuState;
+import Game.GameStates.SelectionState;
 import Main.Handler;
 import Resources.Images;
 
@@ -88,7 +89,7 @@ public class Map {
             }
         }
         handler.getMario().drawMario(g2);
-        if( MenuState.multiP) {
+        if( SelectionState.multiP) {
         	handler.getLuigi().drawLuigi(g2);
         }
        
@@ -129,7 +130,7 @@ public class Map {
             }
         }
         handler.getMario().drawMario(g2);
-        if( MenuState.multiP) {
+        if( SelectionState.multiP) {
         	handler.getLuigi().drawLuigi(g2);
         }
        

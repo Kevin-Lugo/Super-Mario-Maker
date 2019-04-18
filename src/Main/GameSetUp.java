@@ -9,6 +9,7 @@ import Game.GameStates.GameOverState;
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
+import Game.GameStates.SelectionState;
 import Game.GameStates.State;
 import Game.World.Map;
 import Game.World.MapBuilder;
@@ -56,6 +57,8 @@ public class GameSetUp implements Runnable {
 	public State menuState;
 	public State pauseState;
 	public State gameOverState;
+	public State selectionState;
+	
 
 	// Res.music
 	private MusicHandler musicHandler;
@@ -90,7 +93,9 @@ public class GameSetUp implements Runnable {
 		menuState = new MenuState(handler);
 		pauseState = new PauseState(handler);
 		gameOverState = new GameOverState(handler);
-
+		selectionState = new SelectionState(handler);
+		
+		
 		State.setState(menuState);
 	}
 
@@ -155,7 +160,7 @@ public class GameSetUp implements Runnable {
 			musicHandler.restartBackground();
 		}
 
-		if (MenuState.multiP && Screencount == 0) {
+		if (SelectionState.multiP && Screencount == 0) {
 			display2 = new DisplayScreen("Player 2", handler.width, handler.height);
 			display2.getFrame().setLocation(handler.width, handler.getHeight()/2 -300);
 			handler.getGame().display.getFrame().setLocation(0, handler.getHeight()/2 -300);
@@ -168,7 +173,7 @@ public class GameSetUp implements Runnable {
 			State.getState().tick();
 
 		if (handler.isInMap()) {
-			if (!MenuState.multiP) {
+			if (!SelectionState.multiP) {
 				updateCamera();
 			} else {
 				updateCamera();
@@ -227,7 +232,7 @@ public class GameSetUp implements Runnable {
 	}
 
 	private void render() {
-		if (!MenuState.multiP) {
+		if (!SelectionState.multiP) {
 			bs = display.getCanvas().getBufferStrategy();
 
 			if (bs == null) {
@@ -264,7 +269,7 @@ public class GameSetUp implements Runnable {
 
 			if (State.getState() != null) {
 				State.getState().render(g);
-				if (State.getState() instanceof GameState && MenuState.multiP) {
+				if (State.getState() instanceof GameState && SelectionState.multiP) {
 					handler.getMap().drawMap2(gL2);
 				}
 			}
