@@ -185,7 +185,7 @@ public class Player extends BaseDynamicEntity {
 
 		for(BaseDynamicEntity enemy : enemies){
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
-			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock)) {
+			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock) && !(enemy instanceof Item)) {
 				if(!isBig) {
 					marioDies = true;
 					State.setState(handler.getGame().gameOverState);
