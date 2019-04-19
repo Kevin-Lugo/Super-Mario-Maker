@@ -9,6 +9,7 @@ import Main.Handler;
 import Resources.Animation;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -214,6 +215,7 @@ public class Player extends BaseDynamicEntity {
 			velY=10;
 			handler.getGame().getMusicHandler().playJump();
 		}
+		
 	}
 
 	public double getVelX() {
