@@ -9,6 +9,7 @@ import Main.Handler;
 import Resources.Animation;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
