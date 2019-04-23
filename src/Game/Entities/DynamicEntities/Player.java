@@ -242,7 +242,6 @@ public class Player extends BaseDynamicEntity {
 				jumpcounter++;
 
 			}
-
 		}
 
 	}
