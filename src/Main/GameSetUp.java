@@ -96,7 +96,7 @@ public class GameSetUp implements Runnable {
 		selectionState = new SelectionState(handler);
 		
 		
-		State.setState(menuState);
+		State.setState(selectionState);
 	}
 
 
@@ -272,6 +272,9 @@ public class GameSetUp implements Runnable {
 				State.getState().render(g);
 				if (State.getState() instanceof GameState && SelectionState.multiP) {
 					handler.getMap().drawMap2(gL2);
+				}
+				if(State.getState() instanceof MenuState) {
+					gL2.drawImage(Images.luigiWaiting,0,0,display2.getCanvas().getWidth(), display.getCanvas().getHeight(),null);
 				}
 			}
 

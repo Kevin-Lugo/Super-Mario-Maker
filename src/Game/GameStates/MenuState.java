@@ -75,14 +75,7 @@ public class MenuState extends State {
 						State.setState(handler.getGame().gameState);
 					}
 				}, this.handler);
-
-		uiManager.addObjects(new UIImageButton(handler.getWidth() / 2 - 64,
-				handler.getHeight() / 2 + (handler.getHeight() / 8), 128, 64, Images.butstart, () -> {
-					if (!handler.isInMap()) {
-						mode = "Select";
-						State.setState(handler.getGame().selectionState);
-					}
-				}));
+		mode = "Select";
 	}
 
 	@Override

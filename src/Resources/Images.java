@@ -65,6 +65,7 @@ public class Images {
 	public static BufferedImage Pause;
 	public static BufferedImage GameOver;
 	public static BufferedImage Cursor;
+	public static BufferedImage luigiWaiting;
 
 	public static BufferedImage testMap;
 	public static BufferedImage testMaptwo;
@@ -159,6 +160,7 @@ public class Images {
 			Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/Pause.png"));
 			GameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/GameOverState.jpg"));
 			Cursor = ImageIO.read(getClass().getResourceAsStream("/Sheets/cursor.png"));
+			luigiWaiting =  ImageIO.read(getClass().getResourceAsStream("/Sheets/LuigiWaiting.jpg"));
 			butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut
 			butstart[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/HoverBut.png"));//hoverbut
 			butstart[2]= ImageIO.read(getClass().getResourceAsStream("/Buttons/ClickedBut.png"));//clickbut
