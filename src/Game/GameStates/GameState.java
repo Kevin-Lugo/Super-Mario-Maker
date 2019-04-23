@@ -2,13 +2,14 @@ package Game.GameStates;
 
 import Display.UI.UIPointer;
 import Game.Entities.DynamicEntities.BaseDynamicEntity;
+import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.World.MapBuilder;
 import Main.Handler;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-
+import Display.UI.UIListener;
 
 /**
  * Created by AlexVR on 7/1/2018.
