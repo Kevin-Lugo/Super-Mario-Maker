@@ -4,11 +4,13 @@ import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.BoundBlock;
 import Game.Entities.StaticEntities.NoteBlock;
 import Game.GameStates.MenuState;
+import Game.GameStates.SelectionState;
 import Game.GameStates.State;
 import Main.Handler;
 import Resources.Animation;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -50,7 +52,7 @@ public class Player extends BaseDynamicEntity {
 		checkMarioHorizontalCollision();
 		checkTopCollisions();
 		checkItemCollision();
-		if(MenuState.multiP) {
+		if(SelectionState.multiP) {
 			checkLuigiBottomCollisions();
 			checkLuigiTopCollisions();
 			checkLuigiHorizontalCollision();
@@ -267,7 +269,7 @@ public class Player extends BaseDynamicEntity {
 
 		for(BaseDynamicEntity enemy : enemies){
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
-			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock)) {
+			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock) && !(enemy instanceof Item)) {
 				if(!isBig) {
 					marioDies = true;
 					State.setState(handler.getGame().gameOverState);
@@ -344,6 +346,7 @@ public class Player extends BaseDynamicEntity {
 			velY=10;
 			handler.getGame().getMusicHandler().playJump();
 		}
+		
 	}
 
 	public double getVelX() {

@@ -32,8 +32,9 @@ public class Luigi extends Player{
 	    if(!grabbed) {
             super.tick();
             if (!this.hit) {
-                if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_CONTROL) && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
+                if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_ALT) && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
                     this.jump();
+                  	
                 }
 
                 if (handler.getKeyManager().rightL && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {

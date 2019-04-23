@@ -11,6 +11,7 @@ public class Mario extends Player{
 
 	private boolean hit = false;
 	public boolean grabbed =false;
+	public int jumpCounter =0;
 
 	public Mario(int x, int y, int width, int height, Handler handler) {
 		super(x, y, width, height, handler, Images.marioSmallWalkRight[0]
@@ -34,6 +35,8 @@ public class Mario extends Player{
             if (!this.hit) {
                 if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE) && !handler.getKeyManager().up && !handler.getKeyManager().down) {
                     this.jump();
+                   }
+                   
                 }
 
                 if (handler.getKeyManager().right && !handler.getKeyManager().up && !handler.getKeyManager().down) {
@@ -84,7 +87,7 @@ public class Mario extends Player{
                 this.setY(this.getY() - 30);
             }
         }
-	}
+	
 
 	public void drawMario(Graphics2D g2) {
 		if(!grabbed) {

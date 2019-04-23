@@ -42,6 +42,7 @@ public class KeyManager implements KeyListener {
 		down = keys[KeyEvent.VK_S] ;
 		left = keys[KeyEvent.VK_A] ;
 		right = keys[KeyEvent.VK_D] ;
+		
 		upL = keys[KeyEvent.VK_UP] ;
 		downL = keys[KeyEvent.VK_DOWN] ;
 		leftL = keys[KeyEvent.VK_LEFT] ;
