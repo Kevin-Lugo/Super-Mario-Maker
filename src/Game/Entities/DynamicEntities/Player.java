@@ -3,14 +3,12 @@ package Game.Entities.DynamicEntities;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.BoundBlock;
 import Game.Entities.StaticEntities.NoteBlock;
-import Game.GameStates.MenuState;
 import Game.GameStates.SelectionState;
 import Game.GameStates.State;
 import Main.Handler;
 import Resources.Animation;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
