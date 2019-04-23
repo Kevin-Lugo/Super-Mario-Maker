@@ -164,8 +164,9 @@ public class GameSetUp implements Runnable {
 		}
 
 		// game states are the menus
-		if (State.getState() != null)
+		if (State.getState() != null) {
 			State.getState().tick();
+		}
 
 		if (handler.isInMap()) {
 			if (!MenuState.multiP) {
@@ -203,25 +204,25 @@ public class GameSetUp implements Runnable {
 	}
 
 	private void updateCamera2() {
-		Player mario = handler.getLuigi();
-		double marioVelocityX = mario.getVelX();
-		double marioVelocityY = mario.getVelY();
+		Player luigi = handler.getLuigi();
+		double luigiVelocityX = luigi.getVelX();
+		double luigiVelocityY = luigi.getVelY();
 		double shiftAmount = 0;
 		double shiftAmountY = 0;
 
-		if (marioVelocityX > 0 && mario.getX() - 2 * (handler.getWidth() / 3) > handler.getCamera2().getX()) {
-			shiftAmount = marioVelocityX;
+		if (luigiVelocityX > 0 && luigi.getX() - 2 * (handler.getWidth() / 3) > handler.getCamera2().getX()) {
+			shiftAmount = luigiVelocityX;
 		}
-		if (marioVelocityX < 0
-				&& mario.getX() + 2 * (handler.getWidth() / 3) < handler.getCamera2().getX() + handler.width) {
-			shiftAmount = marioVelocityX;
+		if (luigiVelocityX < 0
+				&& luigi.getX() + 2 * (handler.getWidth() / 3) < handler.getCamera2().getX() + handler.width) {
+			shiftAmount = luigiVelocityX;
 		}
-		if (marioVelocityY > 0 && mario.getY() - 2 * (handler.getHeight() / 3) > handler.getCamera2().getY()) {
-			shiftAmountY = marioVelocityY;
+		if (luigiVelocityY > 0 && luigi.getY() - 2 * (handler.getHeight() / 3) > handler.getCamera2().getY()) {
+			shiftAmountY = luigiVelocityY;
 		}
-		if (marioVelocityX < 0
-				&& mario.getY() + 2 * (handler.getHeight() / 3) < handler.getCamera2().getY() + handler.height) {
-			shiftAmountY = -marioVelocityY;
+		if (luigiVelocityX < 0
+				&& luigi.getY() + 2 * (handler.getHeight() / 3) < handler.getCamera2().getY() + handler.height) {
+			shiftAmountY = -luigiVelocityY;
 		}
 		handler.getCamera2().moveCam(shiftAmount, shiftAmountY);
 	}
@@ -268,7 +269,7 @@ public class GameSetUp implements Runnable {
 					handler.getMap().drawMap2(gL2);
 				}
 			}
-				
+
 			// End Drawing!
 			bs.show();
 			bs2.show();
@@ -276,8 +277,8 @@ public class GameSetUp implements Runnable {
 			gL.dispose();
 		}
 
-	
-		
+
+
 	}
 
 	public Map getMap() {

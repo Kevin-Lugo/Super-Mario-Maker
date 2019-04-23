@@ -1,9 +1,9 @@
 package Game.Entities.DynamicEntities;
 
-import Game.Entities.EntityBase;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.BoundBlock;
 import Game.Entities.StaticEntities.NoteBlock;
+import Game.GameStates.MenuState;
 import Game.GameStates.State;
 import Main.Handler;
 import Resources.Animation;
@@ -50,6 +50,11 @@ public class Player extends BaseDynamicEntity {
 		checkMarioHorizontalCollision();
 		checkTopCollisions();
 		checkItemCollision();
+		if(MenuState.multiP) {
+			checkLuigiBottomCollisions();
+			checkLuigiTopCollisions();
+			checkLuigiHorizontalCollision();
+		}
 		if(!isBig) {
 			if (facing.equals("Left") && moving) {
 				playerSmallLeftAnimation.tick();
@@ -136,6 +141,58 @@ public class Player extends BaseDynamicEntity {
 		}
 	}
 
+	public void checkLuigiBottomCollisions() {
+		Player luigi = this;
+		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
+		ArrayList<BaseDynamicEntity> enemies =  handler.getMap().getEnemiesOnMap();
+
+		Rectangle luigiBottomBounds =getBottomBounds();
+
+		if (!luigi.jumping) {
+			falling = true;
+		}
+
+		for (BaseStaticEntity brick : bricks) {
+			Rectangle brickTopBounds = brick.getTopBounds();
+			if (luigiBottomBounds.intersects(brickTopBounds) && !(brick instanceof NoteBlock)) {
+				luigi.setY(brick.getY() - luigi.getDimension().height + 1);
+				falling = false;
+				velY=0;
+			}
+			if(brick instanceof BoundBlock) {
+				if(luigiBottomBounds.intersects(brickTopBounds)) {
+					State.setState(handler.getGame().gameOverState);
+				}
+			}
+			if(brick instanceof NoteBlock) {
+				if(luigiBottomBounds.intersects(brickTopBounds)) {
+					falling = false;
+					luigi.jump();
+				}
+			}
+		}
+
+		for (BaseDynamicEntity enemy : enemies) {
+			Rectangle enemyTopBounds = enemy.getTopBounds();
+			if (luigiBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item) && !(enemy instanceof PowerUpBlock)) {
+				if(!enemy.ded) {
+					handler.getGame().getMusicHandler().playStomp();
+				}
+				enemy.kill();
+				falling=false;
+				velY=0;
+			}
+
+			if(enemy instanceof PowerUpBlock) {
+				if(luigiBottomBounds.intersects(enemyTopBounds)) {
+					luigi.setY(enemy.getY() - luigi.getDimension().height + 1);
+					falling = false;
+					velY=0;
+				}
+			}
+		}
+	}
+
 	public void checkTopCollisions() {
 		Player mario = this;
 		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
@@ -160,6 +217,32 @@ public class Player extends BaseDynamicEntity {
 			}
 		}
 	}
+
+	public void checkLuigiTopCollisions() {
+		Player luigi = this;
+		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
+		ArrayList<BaseDynamicEntity> enemies =  handler.getMap().getEnemiesOnMap();
+
+		Rectangle luigiTopBounds = luigi.getTopBounds();
+		for (BaseStaticEntity brick : bricks) {
+			Rectangle brickBottomBounds = brick.getBottomBounds();
+			if (luigiTopBounds.intersects(brickBottomBounds)) {
+				velY=0;
+				luigi.setY(brick.getY() + brick.height);
+			}
+		}
+		for (BaseDynamicEntity block : enemies) {
+			Rectangle blockBottomBounds = block.getBottomBounds();
+			if(block instanceof PowerUpBlock) {
+				if (luigiTopBounds.intersects(blockBottomBounds)) {
+					velY=0;
+					luigi.setY(block.getY() + block.height);
+					luigi.isBig = true;
+				}
+			}
+		}
+	}
+
 
 	public void checkMarioHorizontalCollision(){
 		Player mario = this;
@@ -204,6 +287,53 @@ public class Player extends BaseDynamicEntity {
 		}
 
 		if(marioDies) {
+			handler.getMap().reset();
+		}
+	}
+
+	public void checkLuigiHorizontalCollision(){
+		Player luigi = this;
+		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
+		ArrayList<BaseDynamicEntity> enemies = handler.getMap().getEnemiesOnMap();
+
+		boolean luigiDies = false;
+		boolean toRight = moving && facing.equals("Right");
+
+		Rectangle luigiBounds = toRight ? luigi.getRightBounds() : luigi.getLeftBounds();
+
+		for (BaseStaticEntity brick : bricks) {
+			Rectangle brickBounds = !toRight ? brick.getRightBounds() : brick.getLeftBounds();
+			if (luigiBounds.intersects(brickBounds)) {
+				velX=0;
+				if(toRight)
+					luigi.setX(brick.getX() - luigi.getDimension().width);
+				else
+					luigi.setX(brick.getX() + brick.getDimension().width);
+			}
+		}
+
+		for(BaseDynamicEntity enemy : enemies){
+			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
+			if (luigiBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock)) {
+				if(!isBig) {
+					luigiDies = true;
+					State.setState(handler.getGame().gameOverState);
+				}
+				isBig = false;
+				break;
+			}
+			if(enemy instanceof PowerUpBlock) {
+				if(luigiBounds.intersects(enemyBounds)) {
+					velX=0;
+					if(toRight)
+						luigi.setX(enemy.getX() - luigi.getDimension().width);
+					else
+						luigi.setX(enemy.getX() + enemy.getDimension().width);
+				}
+			}
+		}
+
+		if(luigiDies) {
 			handler.getMap().reset();
 		}
 	}

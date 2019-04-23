@@ -14,13 +14,13 @@ public class Luigi extends Player{
 	public boolean grabbed =false;
 
 	public Luigi(int x, int y, int width, int height, Handler handler) {
-		super(x, y, width, height, handler, Images.marioSmallWalkRight[0]
-				,new Animation(175,Images.marioSmallWalkLeft)
-				, new Animation(175,Images.marioSmallWalkRight)
-				, new Animation(150,Images.marioBigWalkLeft)
-				, new Animation(150,Images.marioBigWalkRight)
-				, new Animation(115,Images.marioBigRunLeft)
-				, new Animation(115,Images.marioBigRunRight));
+		super(x, y, width, height, handler, Images.luigiSmallWalkRight[0]
+				,new Animation(175,Images.luigiSmallWalkLeft)
+				, new Animation(175,Images.luigiSmallWalkRight)
+				, new Animation(150,Images.luigiBigWalkLeft)
+				, new Animation(150,Images.luigiBigWalkRight)
+				, new Animation(115,Images.luigiBigRunLeft)
+				, new Animation(115,Images.luigiBigRunRight));
 		if(isBig){
 			this.y-=8;
 			this.height+=8;
@@ -91,15 +91,15 @@ public class Luigi extends Player{
 			if (!isBig) {
 				if (handler.getKeyManager().upL) {
 					if (facing.equals("Left")) {
-						g2.drawImage(Images.marioSmallJumpLeft[2], x, y, width, height, null);
+						g2.drawImage(Images.luigiSmallJumpLeft[2], x, y, width, height, null);
 					} else {
-						g2.drawImage(Images.marioSmallJumpRight[2], x, y, width, height, null);
+						g2.drawImage(Images.luigiSmallJumpRight[2], x, y, width, height, null);
 					}
 				} else if (handler.getKeyManager().downL) {
 					if (facing.equals("Left")) {
-						g2.drawImage(Images.marioSmallJumpLeft[3], x, y, width, height, null);
+						g2.drawImage(Images.luigiSmallJumpLeft[3], x, y, width, height, null);
 					} else {
-						g2.drawImage(Images.marioSmallJumpRight[3], x, y, width, height, null);
+						g2.drawImage(Images.luigiSmallJumpRight[3], x, y, width, height, null);
 					}
 				} else if (!jumping && !falling) {
 					if (facing.equals("Left") && moving) {
@@ -108,23 +108,23 @@ public class Luigi extends Player{
 						g2.drawImage(playerSmallRightAnimation.getCurrentFrame(), x, y, width, height, null);
 					}
 					if (facing.equals("Left") && !moving) {
-						g2.drawImage(Images.marioSmallWalkLeft[0], x, y, width, height, null);
+						g2.drawImage(Images.luigiSmallWalkLeft[0], x, y, width, height, null);
 					} else if (facing.equals("Right") && !moving) {
-						g2.drawImage(Images.marioSmallWalkRight[0], x, y, width, height, null);
+						g2.drawImage(Images.luigiSmallWalkRight[0], x, y, width, height, null);
 					}
 				} else {
 					if (jumping) {
 						if (facing.equals("Left")) {
-							g2.drawImage(Images.marioSmallJumpLeft[0], x, y, width, height, null);
+							g2.drawImage(Images.luigiSmallJumpLeft[0], x, y, width, height, null);
 						} else {
-							g2.drawImage(Images.marioSmallJumpRight[0], x, y, width, height, null);
+							g2.drawImage(Images.luigiSmallJumpRight[0], x, y, width, height, null);
 						}
 
 					} else {
 						if (facing.equals("Left")) {
-							g2.drawImage(Images.marioSmallJumpLeft[1], x, y, width, height, null);
+							g2.drawImage(Images.luigiSmallJumpLeft[1], x, y, width, height, null);
 						} else {
-							g2.drawImage(Images.marioSmallJumpRight[1], x, y, width, height, null);
+							g2.drawImage(Images.luigiSmallJumpRight[1], x, y, width, height, null);
 						}
 					}
 				}
@@ -132,15 +132,15 @@ public class Luigi extends Player{
 				if (!changeDirrection) {
 					if (handler.getKeyManager().upL) {
 						if (facing.equals("Left")) {
-							g2.drawImage(Images.marioBigJumpLeft[4], x, y, width, height, null);
+							g2.drawImage(Images.luigiBigJumpLeft[4], x, y, width, height, null);
 						} else {
-							g2.drawImage(Images.marioBigJumpRight[4], x, y, width, height, null);
+							g2.drawImage(Images.luigiBigJumpRight[4], x, y, width, height, null);
 						}
 					} else if (handler.getKeyManager().downL) {
 						if (facing.equals("Left")) {
-							g2.drawImage(Images.marioBigJumpLeft[3], x, y, width, height, null);
+							g2.drawImage(Images.luigiBigJumpLeft[3], x, y, width, height, null);
 						} else {
-							g2.drawImage(Images.marioBigJumpRight[3], x, y, width, height, null);
+							g2.drawImage(Images.luigiBigJumpRight[3], x, y, width, height, null);
 						}
 					} else if (!jumping && !falling) {
 						if (facing.equals("Left") && moving && running) {
@@ -159,16 +159,16 @@ public class Luigi extends Player{
 					} else {
 						if (jumping) {
 							if (facing.equals("Left")) {
-								g2.drawImage(Images.marioBigJumpLeft[0], x, y, width, height, null);
+								g2.drawImage(Images.luigiBigJumpLeft[0], x, y, width, height, null);
 							} else {
-								g2.drawImage(Images.marioBigJumpRight[0], x, y, width, height, null);
+								g2.drawImage(Images.luigiBigJumpRight[0], x, y, width, height, null);
 							}
 
 						} else {
 							if (facing.equals("Left")) {
-								g2.drawImage(Images.marioBigJumpLeft[1], x, y, width, height, null);
+								g2.drawImage(Images.luigiBigJumpLeft[1], x, y, width, height, null);
 							} else {
-								g2.drawImage(Images.marioBigJumpRight[1], x, y, width, height, null);
+								g2.drawImage(Images.luigiBigJumpRight[1], x, y, width, height, null);
 							}
 						}
 					}
@@ -179,9 +179,9 @@ public class Luigi extends Player{
 						drawLuigi(g2);
 					}
 					if (facing.equals("Right")) {
-						g2.drawImage(Images.marioBigJumpRight[4], x, y, width, height, null);
+						g2.drawImage(Images.luigiBigJumpRight[4], x, y, width, height, null);
 					} else {
-						g2.drawImage(Images.marioBigJumpLeft[4], x, y, width, height, null);
+						g2.drawImage(Images.luigiBigJumpLeft[4], x, y, width, height, null);
 					}
 				}
 			}
