@@ -82,7 +82,6 @@ public class MenuState extends State {
 						mode = "Select";
 						State.setState(handler.getGame().selectionState);
 					}
-					
 				}));
 	}
 
@@ -268,7 +267,7 @@ public class MenuState extends State {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
 						Images.tint(Images.Cursor, .50196078f, .50196078f, .50196078f), new Point(0, 0), "cursor1");
 				display.getCanvas().setCursor(c);
-				colorSelected = MapBuilder.skeleton;
+				colorSelected = MapBuilder.piranha;
 			}
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
@@ -281,6 +280,12 @@ public class MenuState extends State {
 						Images.tint(Images.Cursor, 0, .41176471f, .70588235f), new Point(0, 0), "cursor1");
 				display.getCanvas().setCursor(c);
 				colorSelected = MapBuilder.powerUpBlock;
+			}
+			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
+						Images.tint(Images.Cursor, 0, .6f, 0), new Point(0, 0), "cursor1");
+				display.getCanvas().setCursor(c);
+				colorSelected = MapBuilder.pipe;
 			}
 		}
 		if (SelectionState.multiP) {
@@ -336,7 +341,7 @@ public class MenuState extends State {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
 						Images.tint(Images.Cursor, .50196078f, .50196078f, .50196078f), new Point(0, 0), "cursor1");
 				display.getCanvas().setCursor(c);
-				colorSelected = MapBuilder.skeleton;
+				colorSelected = MapBuilder.piranha;
 			}
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
@@ -349,6 +354,12 @@ public class MenuState extends State {
 						Images.tint(Images.Cursor, 0, .41176471f, .70588235f), new Point(0, 0), "cursor1");
 				display.getCanvas().setCursor(c);
 				colorSelected = MapBuilder.powerUpBlock;
+			}
+			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
+				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
+						Images.tint(Images.Cursor, 0, .6f, 0), new Point(0, 0), "cursor1");
+				display.getCanvas().setCursor(c);
+				colorSelected = MapBuilder.pipe;
 			}
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_L)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor, 0, .50196078f, 0),
@@ -387,18 +398,35 @@ public class MenuState extends State {
 		}
 		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && SelectionState.singleP) {
 			JOptionPane.showMessageDialog(display.getFrame(),
-					"Number key <-> Color Mapping: \n" + "0 -> Erase \n" + "1 -> Mario (Red)\n"
-							+ "2 -> Break Block (Blue)\n" + "3 -> Mystery Block (Yellow)\n"
-							+ "4 -> Surface Block (Orange)\n" + "5 -> Bounds Block (Black)\n"
-							+ "6 -> Mushroom (Purple)\n" + "7 -> Goomba (Brown)\n" + "8 -> Skeleton (Gray)\n"
-							+ "9 -> Note Block (Blue)\n" + "P -> Power Up Block (Pink)");
+					"Number key <-> Color Mapping: \n" +
+							"0 -> Erase \n" +
+							"1 -> Mario (Red)\n" +
+							"2 -> Break Block (Blue)\n" + 
+							"3 -> Mystery Block (Yellow)\n"+ 
+							"4 -> Surface Block (Orange)\n" + 
+							"5 -> Bounds Block (Black)\n" + 
+							"6 -> Mushroom (Purple)\n" +
+							"7 -> Goomba (Brown)\n" +
+							"8 -> piranha (Gray)\n" + 
+							"9 -> Note Block (Blue)\n" + 
+							"P -> Power Up Block (Pink)\n" + 
+							"G -> Pipe (Darker green)");
 		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && SelectionState.multiP) { // MENU FOR MULTIPLAYER
 			JOptionPane.showMessageDialog(display.getFrame(),
-					"Number key <-> Color Mapping: \n" + "0 -> Erase \n" + "1 -> Mario (Red)\n"
-							+ "2 -> Break Block (Blue)\n" + "3 -> Mystery Block (Yellow)\n"
-							+ "4 -> Surface Block (Orange)\n" + "5 -> Bounds Block (Black)\n"
-							+ "6 -> Mushroom (Purple)\n" + "7 -> Goomba (Brown)\n" + "8 -> Skeleton (Gray)\n"
-							+ "9 -> Note Block (Blue)\n" + "P -> Power Up Block (Pink)\n" + "L -> Luigi (Green)");
+					"Number key <-> Color Mapping: \n" +
+							"0 -> Erase \n" +
+							"1 -> Mario (Red)\n" +
+							"2 -> Break Block (Blue)\n" + 
+							"3 -> Mystery Block (Yellow)\n"+ 
+							"4 -> Surface Block (Orange)\n" + 
+							"5 -> Bounds Block (Black)\n" + 
+							"6 -> Mushroom (Purple)\n" +
+							"7 -> Goomba (Brown)\n" +
+							"8 -> piranha (Gray)\n" + 
+							"9 -> Note Block (Blue)\n" + 
+							"P -> Power Up Block (Pink)\n"  + 
+							"G -> Pipe (Darker green)" +
+							"L -> Luigi (Green)");
 
 		}
 

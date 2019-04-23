@@ -58,8 +58,7 @@ public class Images {
 
 	public static BufferedImage[] goomba;
 	// new Enemy
-	public static BufferedImage[] skeleton;
-	public static BufferedImage[] skeletonDies;
+	public static BufferedImage[] piranha;
 
 
 	public static BufferedImage title;
@@ -78,6 +77,7 @@ public class Images {
 	public static BufferedImage boundBlock;
 	public static BufferedImage mushroom;
 	public static BufferedImage goombaDies;
+	public static BufferedImage pipe;
 
 	private SpriteSheet mainmenuSpriteSheet;
 	private SpriteSheet backgroundSpriteSheet;
@@ -89,6 +89,7 @@ public class Images {
 	private SpriteSheet SAttackSpriteSheet;
 	private SpriteSheet enemySpriteSheet;
 	private SpriteSheet LuigiSpriteSheet;
+	private SpriteSheet pipeSprite;
 
 
 	public Images() {
@@ -130,8 +131,7 @@ public class Images {
 		luigiBigJumpLeft = new BufferedImage[5];
 		luigiBigJumpRight = new BufferedImage[5];
 		goomba = new BufferedImage[2];
-		skeleton = new BufferedImage[3];
-		skeletonDies = new BufferedImage[2];
+		piranha = new BufferedImage[2];
 
 		powerUpBlock = new BufferedImage[4];
 
@@ -151,6 +151,7 @@ public class Images {
 			SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
 			enemySpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet.png")));
 			LuigiSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/LuigiSpriteSheet.png")));
+			pipeSprite = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/pipesSheet.png")));
 
 
 			//Images
@@ -397,11 +398,11 @@ public class Images {
 			goombaDies=goombaSpriteSheet.crop(539,100,162,81);
 
 			//new Enemy
-			skeleton[0] = enemySpriteSheet.crop(282,168, 27, 36);
-			skeleton[1] = enemySpriteSheet.crop(310, 170, 26, 34);
-			skeleton[2] = enemySpriteSheet.crop(201,168,29,37);
-			skeletonDies[0] = enemySpriteSheet.crop(255, 178, 27, 28);
-			skeletonDies[1] = enemySpriteSheet.crop(230, 186, 26, 19);
+			piranha[0] = enemySpriteSheet.crop(156,82, 20, 25);
+			piranha[1] = enemySpriteSheet.crop(175, 82, 22, 26);
+			
+			//pipe
+			pipe = pipeSprite.crop(171, 165, 32, 35);
 
 
 		}catch (IOException e) {
