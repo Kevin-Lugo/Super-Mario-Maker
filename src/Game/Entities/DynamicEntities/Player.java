@@ -3,6 +3,8 @@ package Game.Entities.DynamicEntities;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.BoundBlock;
 import Game.Entities.StaticEntities.NoteBlock;
+import Game.Entities.StaticEntities.RaceBlock;
+import Game.GameStates.MenuState;
 import Game.GameStates.SelectionState;
 import Game.GameStates.State;
 import Main.Handler;
@@ -115,6 +117,11 @@ public class Player extends BaseDynamicEntity {
 				velY = 0;
 
 			}
+			if (brick instanceof RaceBlock) {
+				if (marioBottomBounds.intersects(brickTopBounds)) {
+					State.setState(handler.getGame().gameOverState);
+				}
+			}
 			if (brick instanceof BoundBlock) {
 				if (marioBottomBounds.intersects(brickTopBounds)) {
 					State.setState(handler.getGame().gameOverState);
@@ -133,7 +140,7 @@ public class Player extends BaseDynamicEntity {
 				falling = false;
 				velY = 0;
 				jumpcounter = 0;
-				System.out.println("  Jumping");
+				System.out.println(" Jumping");
 			}
 
 		}
@@ -178,6 +185,11 @@ public class Player extends BaseDynamicEntity {
 				luigi.setY(brick.getY() - luigi.getDimension().height + 1);
 				falling = false;
 				velY=0;
+			}
+			if (brick instanceof RaceBlock) {
+				if (luigiBottomBounds.intersects(brickTopBounds)) {
+					State.setState(handler.getGame().gameOverState);
+				}
 			}
 			if(brick instanceof BoundBlock) {
 				if(luigiBottomBounds.intersects(brickTopBounds)) {

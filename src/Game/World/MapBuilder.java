@@ -25,6 +25,7 @@ public class MapBuilder {
 	public static int misteryBlock = new Color(255,216,0).getRGB();
 	public static int powerUpBlock = new Color(255,105,180).getRGB();
 	public static int noteBlock = new Color(0,0,255).getRGB();
+	public static int RaceBlock = new Color(100,100,100).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
 	public static int skeleton = new Color( 50,15,1).getRGB();
@@ -58,6 +59,9 @@ public class MapBuilder {
 				}else if(currentPixel == noteBlock){
 					BaseStaticEntity NoteBlock = new NoteBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(NoteBlock);
+				}else if(currentPixel == RaceBlock){
+					BaseStaticEntity RaceBlock = new RaceBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(RaceBlock);
 				}else if(currentPixel == mushroom){
 					BaseDynamicEntity Mushroom = new Mushroom(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Mushroom);

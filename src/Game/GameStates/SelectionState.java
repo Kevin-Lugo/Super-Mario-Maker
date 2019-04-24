@@ -60,8 +60,10 @@ public class SelectionState extends State {
 	@Override
 	public void tick() {
 		// TODO Auto-generated method stub
+		
 		handler.getMouseManager().setUimanager(uiManager);
 		uiManager.tick();
+		
 		uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
 				(handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "Single Player", () -> {
 					if (!handler.isInMap()) {
@@ -92,6 +94,7 @@ public class SelectionState extends State {
 						mode = "Select";
 					}));
 		}
+	
 
 	}
 
