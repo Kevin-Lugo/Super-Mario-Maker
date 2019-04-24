@@ -6,7 +6,7 @@ import Game.Entities.DynamicEntities.Luigi;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Mushroom;
 import Game.Entities.DynamicEntities.PowerUpBlock;
-import Game.Entities.DynamicEntities.Skeleton;
+import Game.Entities.DynamicEntities.Piranha;
 import Game.Entities.StaticEntities.*;
 import Main.Handler;
 import Resources.Images;
@@ -20,6 +20,7 @@ public class MapBuilder {
 	public static int boundBlock = new Color(0,0,0).getRGB();
 	public static int mario = new Color(255,0,0).getRGB();
 	public static int luigi = new Color(0,128,0).getRGB();
+	public static int pipe = new Color(0,153,0).getRGB();
 	public static int surfaceBlock = new Color(255,106,0).getRGB();
 	public static int breakBlock = new Color(0,38,255).getRGB();
 	public static int misteryBlock = new Color(255,216,0).getRGB();
@@ -28,7 +29,7 @@ public class MapBuilder {
 	public static int RaceBlock = new Color(100,100,100).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
-	public static int skeleton = new Color( 50,15,1).getRGB();
+	public static int piranha = new Color( 50,15,1).getRGB();
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -50,6 +51,9 @@ public class MapBuilder {
 				}else if(currentPixel == surfaceBlock){
 					BaseStaticEntity SurfaceBlock = new SurfaceBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(SurfaceBlock);
+				}else if(currentPixel == pipe){
+					BaseStaticEntity Pipe = new Pipe(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(Pipe);
 				}else if(currentPixel == breakBlock){
 					BaseStaticEntity BreakBlock = new BreakBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(BreakBlock);
@@ -68,9 +72,9 @@ public class MapBuilder {
 				}else if(currentPixel == goomba){
 					BaseDynamicEntity Goomba = new Goomba(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Goomba);
-				}else if(currentPixel == skeleton){
-					BaseDynamicEntity Skeleton = new Skeleton(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
-					mapInCreation.addEnemy(Skeleton);
+				}else if(currentPixel == piranha){
+					BaseDynamicEntity Piranha = new Piranha(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(Piranha);
 				}else if(currentPixel == powerUpBlock){
 					BaseDynamicEntity PowerUpBlock = new PowerUpBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(PowerUpBlock);
