@@ -207,7 +207,7 @@ public class MenuState extends State {
 	private void tickNewScreen() {
 		// for the tin take each value and divide by 255.
 		// Ex for a red tint you wan the RGB : 255,0,0 so the tint is 1,0,0
-		if (SelectionState.singleP) {
+		if (!SelectionState.multiP) {
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_0)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor, 1, 1, 1),
 						new Point(0, 0), "cursor1");
@@ -274,15 +274,9 @@ public class MenuState extends State {
 				display.getCanvas().setCursor(c);
 				colorSelected = MapBuilder.powerUpBlock;
 			}
-			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_R)) {
-				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
-						Images.tint(Images.Cursor, 0, .41176471f, .70588235f), new Point(0, 0), "cursor1");
-				display.getCanvas().setCursor(c);
-				colorSelected = MapBuilder.RaceBlock;
-			}
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
-						Images.tint(Images.Cursor, 0, .6f, 0), new Point(0, 0), "cursor1");
+						Images.tint(Images.Cursor, .50196078f, .50196078f, .50196078f), new Point(0, 0), "cursor1");
 				display.getCanvas().setCursor(c);
 				colorSelected = MapBuilder.pipe;
 			}
@@ -362,7 +356,7 @@ public class MenuState extends State {
 			}
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_G)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
-						Images.tint(Images.Cursor, 0, .6f, 0), new Point(0, 0), "cursor1");
+						Images.tint(Images.Cursor, .50196078f,.50196078f,.50196078f), new Point(0, 0), "cursor1");
 				display.getCanvas().setCursor(c);
 				colorSelected = MapBuilder.pipe;
 			}
@@ -401,21 +395,39 @@ public class MenuState extends State {
 			JOptionPane.showMessageDialog(display.getFrame(),
 					"You cant have a map without at least a Mario and a floor right under him. (1 for Mario)");
 		}
-		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && SelectionState.singleP) {
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && !SelectionState.multiP) {
 			JOptionPane.showMessageDialog(display.getFrame(),
-					"Number key <-> Color Mapping: \n" + "0 -> Erase \n" + "1 -> Mario (Red)\n"
-							+ "2 -> Break Block (Blue)\n" + "3 -> Mystery Block (Yellow)\n"
-							+ "4 -> Surface Block (Orange)\n" + "5 -> Bounds Block (Black)\n"
-							+ "6 -> Mushroom (Purple)\n" + "7 -> Goomba (Brown)\n" + "8 -> Skeleton (Gray)\n"
-							+ "9 -> Note Block (Blue)\n" + "P -> Power Up Block (Pink)\n" + "R -> Race Block\n");
+					"Number key <-> Color Mapping: \n" + 
+							"0 -> Erase \n" + 
+							"1 -> Mario (Red)\n" +
+							"2 -> Break Block (Blue)\n" + 
+							"3 -> Mystery Block (Yellow)\n" + 
+							"4 -> Surface Block (Orange)\n" +
+							"5 -> Bounds Block (Black)\n" +
+							"6 -> Mushroom (Purple)\n" +
+							"7 -> Goomba (Brown)\n" + 
+							"8 -> Piranha (Dark Purple)\n" +
+							"9 -> Note Block (Blue)\n" +
+							"G -> Pipe (Gray)\n" +
+							"P -> Power Up Block (Pink)");
 
 		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && SelectionState.multiP) { // MENU FOR MULTIPLAYER
 			JOptionPane.showMessageDialog(display.getFrame(),
-					"Number key <-> Color Mapping: \n" + "0 -> Erase \n" + "1 -> Mario (Red)\n"
-							+ "2 -> Break Block (Blue)\n" + "3 -> Mystery Block (Yellow)\n"
-							+ "4 -> Surface Block (Orange)\n" + "5 -> Bounds Block (Black)\n"
-							+ "6 -> Mushroom (Purple)\n" + "7 -> Goomba (Brown)\n" + "8 -> Skeleton (Gray)\n"
-							+ "9 -> Note Block (Blue)\n" + "P -> Power Up Block (Pink)\n" + "R -> Race Block\n" + "L -> Luigi (Green)");
+					"Number key <-> Color Mapping: \n" +
+							"0 -> Erase \n" + 
+							"1 -> Mario (Red)\n" + 
+							"2 -> Break Block (Blue)\n" + 
+							"3 -> Mystery Block (Yellow)\n" +
+							"4 -> Surface Block (Orange)\n" + 
+							"5 -> Bounds Block (Black)\n" +
+							"6 -> Mushroom (Purple)\n" + 
+							"7 -> Goomba (Brown)\n" + 
+							"8 -> Piranha (Gray)\n" +
+							"9 -> Note Block (Blue)\n" + 
+							"P -> Power Up Block (Pink)\n" + 
+							"G -> Pipe (Gray)\n" +
+							"R -> Race Block\n" +
+							"L -> Luigi (Green)");
 
 		}
 

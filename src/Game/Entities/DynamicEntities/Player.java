@@ -110,6 +110,7 @@ public class Player extends BaseDynamicEntity {
 				mario.setY(brick.getY() - mario.getDimension().height + 1);
 				falling = false;
 				velY = 0;
+				jumpcounter = 0;
 
 			}
 			if (brick instanceof RaceBlock) {
@@ -126,16 +127,7 @@ public class Player extends BaseDynamicEntity {
 				if (marioBottomBounds.intersects(brickTopBounds)) {
 					falling = false;
 					mario.jump();
-
 				}
-			}
-
-			if (marioBottomBounds.intersects(brickTopBounds)) {
-				mario.setY(brick.getY() - mario.getDimension().height + 1);
-				falling = false;
-				velY = 0;
-				jumpcounter = 0;
-				System.out.println(" Jumping");
 			}
 
 		}
@@ -160,10 +152,22 @@ public class Player extends BaseDynamicEntity {
 					velY = 0;
 				}
 			}
+			if(enemy instanceof Piranha) {
+				if (marioBottomBounds.intersects(enemyTopBounds)) {
+					if (!isBig) {
+						boolean marioDies = true;
+						State.setState(handler.getGame().gameOverState);
+					}
+					isBig = false;
+					enemy.kill();
+					this.x += 5;
+					break;
+				}
+			}
 		}
 	}
 
-	
+
 
 	public void checkTopCollisions() {
 		Player mario = this;
@@ -184,7 +188,7 @@ public class Player extends BaseDynamicEntity {
 				if (marioTopBounds.intersects(blockBottomBounds)) {
 					velY = 0;
 					mario.setY(block.getY() + block.height);
-					mario.isBig = true;
+					this.isBig = true;
 				}
 			}
 		}
@@ -215,7 +219,7 @@ public class Player extends BaseDynamicEntity {
 
 		for (BaseDynamicEntity enemy : enemies) {
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
-			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock) && !(enemy instanceof Item)) {
+			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock) && !(enemy instanceof Item) && !(enemy instanceof Player)) {
 				if (!isBig) {
 					marioDies = true;
 					State.setState(handler.getGame().gameOverState);

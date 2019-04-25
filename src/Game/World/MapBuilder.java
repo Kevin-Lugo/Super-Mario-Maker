@@ -20,7 +20,7 @@ public class MapBuilder {
 	public static int boundBlock = new Color(0,0,0).getRGB();
 	public static int mario = new Color(255,0,0).getRGB();
 	public static int luigi = new Color(0,128,0).getRGB();
-	public static int pipe = new Color(0,153,0).getRGB();
+	public static int pipe = new Color(128,128,128).getRGB();
 	public static int surfaceBlock = new Color(255,106,0).getRGB();
 	public static int breakBlock = new Color(0,38,255).getRGB();
 	public static int misteryBlock = new Color(255,216,0).getRGB();
@@ -29,7 +29,7 @@ public class MapBuilder {
 	public static int RaceBlock = new Color(100,100,100).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
-	public static int piranha = new Color( 50,15,1).getRGB();
+	public static int piranha = new Color(50,15,1).getRGB();
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){

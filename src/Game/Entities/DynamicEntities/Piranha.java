@@ -20,4 +20,8 @@ public class Piranha extends BaseDynamicEntity {
 		super.tick();
 		anim.tick();
 	}
+	
+	public void kill() {
+		ded = true;
+	}
 }

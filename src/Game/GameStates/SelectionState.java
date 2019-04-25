@@ -31,7 +31,6 @@ import java.util.Random;
 public class SelectionState extends State {
 	
 	public static boolean multiP;
-	public static boolean singleP;
 
 	public UIManager uiManager;
 	private int background;
@@ -132,7 +131,7 @@ public class SelectionState extends State {
 
 		// testMap1
 		uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
-				handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Multi Player", () -> {
+				handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Multiplayer", () -> {
 					State.setState(handler.getGame().menuState);
 					multiP = true;
 				}, handler, Color.BLACK));
@@ -182,7 +181,7 @@ public class SelectionState extends State {
 	private void tickNewScreen() {
 		// for the tin take each value and divide by 255.
 		// Ex for a red tint you wan the RGB : 255,0,0 so the tint is 1,0,0
-		if (SelectionState.singleP) {
+		if (!SelectionState.multiP) {
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_0)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor, 1, 1, 1),
 						new Point(0, 0), "cursor1");
@@ -364,7 +363,7 @@ public class SelectionState extends State {
 			JOptionPane.showMessageDialog(display.getFrame(),
 					"You cant have a map without at least a Mario and a floor right under him. (1 for Mario)");
 		}
-		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && SelectionState.singleP) {
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && !SelectionState.multiP) {
 			JOptionPane.showMessageDialog(display.getFrame(),
 					"Number key <-> Color Mapping: \n" +
 							"0 -> Erase \n" +

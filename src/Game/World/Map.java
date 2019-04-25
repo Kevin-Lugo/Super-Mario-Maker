@@ -49,7 +49,7 @@ public class Map {
             handler.getCamera().setY(handler.getMario().y - (MapBuilder.pixelMultiplier*10));
             bottomBorder=handler.getHeight()+handler.getMario().y;
         }
-        if(entity instanceof Luigi){
+        else if(entity instanceof Luigi){
             handler.SetLuigi((Luigi) entity);
             handler.getCamera2().setX(handler.getLuigi().x- (MapBuilder.pixelMultiplier*6));
             handler.getCamera2().setY(handler.getLuigi().y - (MapBuilder.pixelMultiplier*10));
@@ -129,11 +129,11 @@ public class Map {
                 g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
             }
         }
+     
         handler.getMario().drawMario(g2);
         if( SelectionState.multiP) {
         	handler.getLuigi().drawLuigi(g2);
         }
-       
         if(this.listener != null && MapBuilder.mapDone) {
             this.listener.render(g2);
             this.hand.render(g2);

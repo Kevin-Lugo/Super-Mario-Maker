@@ -64,6 +64,8 @@ public class Images {
 	public static BufferedImage title;
 	public static BufferedImage Pause;
 	public static BufferedImage GameOver;
+	public static BufferedImage MarioWinState;
+	public static BufferedImage LuigiWinState;
 	public static BufferedImage Cursor;
 	public static BufferedImage luigiWaiting;
 
@@ -160,6 +162,8 @@ public class Images {
 			title = mainmenuSpriteSheet.crop(16,16,256,224);
 			Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/Pause.png"));
 			GameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/GameOverState.jpg"));
+			MarioWinState = ImageIO.read(getClass().getResourceAsStream("/Sheets/MarioWinState.jpg"));
+			LuigiWinState = ImageIO.read(getClass().getResourceAsStream("/Sheets/LuigiWinState.jpg"));
 			Cursor = ImageIO.read(getClass().getResourceAsStream("/Sheets/cursor.png"));
 			luigiWaiting =  ImageIO.read(getClass().getResourceAsStream("/Sheets/LuigiWaiting.jpg"));
 			butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut

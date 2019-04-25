@@ -9,12 +9,12 @@ import Resources.Animation;
 import Resources.Images;
 
 public class Luigi extends Player{
-	
+
 	private boolean hit = false;
 	public boolean grabbed =false;
 
 	public Luigi(int x, int y, int width, int height, Handler handler) {
-		super(x, y, width, height, handler, Images.luigiSmallWalkRight[0]
+		super(x, y, width + 25, height, handler, Images.luigiSmallWalkRight[0]
 				,new Animation(175,Images.luigiSmallWalkLeft)
 				, new Animation(175,Images.luigiSmallWalkRight)
 				, new Animation(150,Images.luigiBigWalkLeft)
@@ -29,62 +29,62 @@ public class Luigi extends Player{
 	}
 	@Override
 	public void tick(){
-	    if(!grabbed) {
-            super.tick();
-            if (!this.hit) {
-                if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_ALT) && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
-                    this.jump();
-                  	
-                }
+		if(!grabbed) {
+			super.tick();
+			if (!this.hit) {
+				if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_ALT) && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
+					this.jump();
 
-                if (handler.getKeyManager().rightL && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
-                    if (handler.getKeyManager().runbuttL) {
-                        velX = 6;
-                        running = true;
-                    } else {
-                        velX = 3;
-                        running = false;
-                    }
-                    if (facing.equals("Left")) {
-                        changeDirrection = true;
-                    }
-                    facing = "Right";
-                    moving = true;
-                } else if (handler.getKeyManager().leftL && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
-                    if (handler.getKeyManager().runbuttL) {
-                        velX = -6;
-                        running = true;
-                    } else {
-                        velX = -3;
-                        running = false;
-                    }
-                    if (facing.equals("Right")) {
-                        changeDirrection = true;
-                    }
-                    facing = "Left";
-                    moving = true;
-                } else {
-                    velX = 0;
-                    moving = false;
-                }
-                if (jumping && velY <= 0) {
-                    jumping = false;
-                    falling = true;
-                } else if (jumping) {
-                    velY = velY - gravityAcc;
-                    y = (int) (y - velY);
-                }
+				}
 
-                if (falling) {
-                    y = (int) (y + velY);
-                    velY = velY + gravityAcc;
-                }
-                x += velX;
-            } else {
-                this.setX(this.getX() - 30);
-                this.setY(this.getY() - 30);
-            }
-        }
+				if (handler.getKeyManager().rightL && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
+					if (handler.getKeyManager().runbuttL) {
+						velX = 6;
+						running = true;
+					} else {
+						velX = 3;
+						running = false;
+					}
+					if (facing.equals("Left")) {
+						changeDirrection = true;
+					}
+					facing = "Right";
+					moving = true;
+				} else if (handler.getKeyManager().leftL && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
+					if (handler.getKeyManager().runbuttL) {
+						velX = -6;
+						running = true;
+					} else {
+						velX = -3;
+						running = false;
+					}
+					if (facing.equals("Right")) {
+						changeDirrection = true;
+					}
+					facing = "Left";
+					moving = true;
+				} else {
+					velX = 0;
+					moving = false;
+				}
+				if (jumping && velY <= 0) {
+					jumping = false;
+					falling = true;
+				} else if (jumping) {
+					velY = velY - gravityAcc;
+					y = (int) (y - velY);
+				}
+
+				if (falling) {
+					y = (int) (y + velY);
+					velY = velY + gravityAcc;
+				}
+				x += velX;
+			} else {
+				this.setX(this.getX() - 30);
+				this.setY(this.getY() - 30);
+			}
+		}
 	}
 
 	public void drawLuigi(Graphics2D g2) {
@@ -149,13 +149,13 @@ public class Luigi extends Player{
 						} else if (facing.equals("Left") && moving && !running) {
 							g2.drawImage(playerBigLeftWalkAnimation.getCurrentFrame(), x, y, width, height, null);
 						} else if (facing.equals("Left") && !moving) {
-							g2.drawImage(Images.marioBigWalkLeft[0], x, y, width, height, null);
+							g2.drawImage(Images.luigiBigWalkLeft[0], x, y, width, height, null);
 						} else if (facing.equals("Right") && moving && running) {
 							g2.drawImage(playerBigRightRunAnimation.getCurrentFrame(), x, y, width, height, null);
 						} else if (facing.equals("Right") && moving && !running) {
 							g2.drawImage(playerBigRightWalkAnimation.getCurrentFrame(), x, y, width, height, null);
 						} else if (facing.equals("Right") && !moving) {
-							g2.drawImage(Images.marioBigWalkRight[0], x, y, width, height, null);
+							g2.drawImage(Images.luigiBigWalkRight[0], x, y, width, height, null);
 						}
 					} else {
 						if (jumping) {
