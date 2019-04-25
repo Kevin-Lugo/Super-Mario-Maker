@@ -140,7 +140,7 @@ public class Player extends BaseDynamicEntity {
 				falling = false;
 				velY = 0;
 				jumpcounter = 0;
-				System.out.println(" Jumping");
+				
 			}
 
 		}
