@@ -388,7 +388,7 @@ public class Images {
 			misteryBlock = interactableSpriteSheet.crop(32,93,16,16);
 			surfaceBlock = interactableSpriteSheet.crop(112,93,16,16);
 			noteBlock = blockSpriteSheet.crop(52, 132, 18, 16);
-			RaceBlock = blockSpriteSheet.crop(130, 69, 18, 19);
+			RaceBlock = blockSpriteSheet.crop(132, 72, 18, 19);
 			//breakBlock = blockSpriteSheet.crop(272,112,16,16);
 			breakBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/brick.png"));
 

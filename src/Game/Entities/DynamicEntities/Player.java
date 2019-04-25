@@ -150,13 +150,12 @@ public class Player extends BaseDynamicEntity {
 			if(enemy instanceof Piranha) {
 				if (marioBottomBounds.intersects(enemyTopBounds)) {
 					if (!isBig) {
-						boolean marioDies = true;
+						handler.getMario().setHit(true);
 						State.setState(handler.getGame().gameOverState);
 					}
-					isBig = false;
-					enemy.kill();
-					this.x += 5;
-					break;
+					else {
+						isBig = false;
+					}
 				}
 			}
 		}
@@ -234,9 +233,11 @@ public class Player extends BaseDynamicEntity {
 					}
 					State.setState(handler.getGame().gameOverState);
 				}
-				isBig = false;
-				this.x += 5;
-				break;
+				else {
+					isBig = false;
+					this.x += 5;
+					break;
+				}
 			}
 			if (enemy instanceof PowerUpBlock) {
 				if (marioBounds.intersects(enemyBounds)) {
