@@ -165,7 +165,7 @@ public class Images {
 			MarioWinState = ImageIO.read(getClass().getResourceAsStream("/Sheets/MarioWinState.jpg"));
 			LuigiWinState = ImageIO.read(getClass().getResourceAsStream("/Sheets/LuigiWinState.jpg"));
 			Cursor = ImageIO.read(getClass().getResourceAsStream("/Sheets/cursor.png"));
-			luigiWaiting =  ImageIO.read(getClass().getResourceAsStream("/Sheets/LuigiWaiting.jpg"));
+			luigiWaiting =  ImageIO.read(getClass().getResourceAsStream("/Sheets/PleaseWait.png"));
 			butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut
 			butstart[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/HoverBut.png"));//hoverbut
 			butstart[2]= ImageIO.read(getClass().getResourceAsStream("/Buttons/ClickedBut.png"));//clickbut

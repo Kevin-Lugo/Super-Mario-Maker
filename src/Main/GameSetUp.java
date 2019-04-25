@@ -282,6 +282,7 @@ public class GameSetUp implements Runnable {
 			}
 
 			// End Drawing!
+			
 			bs.show();
 			bs2.show();
 			g.dispose();
