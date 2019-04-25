@@ -11,6 +11,7 @@ import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
 import Game.GameStates.SelectionState;
 import Game.GameStates.State;
+import Game.GameStates.WinState;
 import Game.World.Map;
 import Game.World.MapBuilder;
 import Input.Camera;
@@ -58,6 +59,7 @@ public class GameSetUp implements Runnable {
 	public State pauseState;
 	public State gameOverState;
 	public State selectionState;
+	public State winState;
 	
 
 	// Res.music
@@ -94,6 +96,7 @@ public class GameSetUp implements Runnable {
 		pauseState = new PauseState(handler);
 		gameOverState = new GameOverState(handler);
 		selectionState = new SelectionState(handler);
+		winState = new WinState(handler);
 		
 		
 		State.setState(selectionState);

@@ -113,11 +113,6 @@ public class Player extends BaseDynamicEntity {
 				jumpcounter = 0;
 
 			}
-			if (brick instanceof RaceBlock) {
-				if (marioBottomBounds.intersects(brickTopBounds)) {
-					State.setState(handler.getGame().gameOverState);
-				}
-			}
 			if (brick instanceof BoundBlock) {
 				if (marioBottomBounds.intersects(brickTopBounds)) {
 					State.setState(handler.getGame().gameOverState);
@@ -181,6 +176,17 @@ public class Player extends BaseDynamicEntity {
 				velY = 0;
 				mario.setY(brick.getY() + brick.height);
 			}
+			if (brick instanceof RaceBlock) {
+				if(this instanceof Mario) {
+					Mario.wins = true;
+					if (marioTopBounds.intersects(brickBottomBounds)) {
+						State.setState(handler.getGame().winState);
+					}
+				}
+				if(marioTopBounds.intersects(brickBottomBounds)) {
+					State.setState(handler.getGame().winState);
+				}
+			}
 		}
 		for (BaseDynamicEntity block : enemies) {
 			Rectangle blockBottomBounds = block.getBottomBounds();
@@ -222,6 +228,10 @@ public class Player extends BaseDynamicEntity {
 			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof PowerUpBlock) && !(enemy instanceof Item) && !(enemy instanceof Player)) {
 				if (!isBig) {
 					marioDies = true;
+					Mario.wins = false;
+					if(SelectionState.multiP) {
+						State.setState(handler.getGame().winState);
+					}
 					State.setState(handler.getGame().gameOverState);
 				}
 				isBig = false;
