@@ -14,7 +14,7 @@ public class Luigi extends Player{
 	public boolean grabbed =false;
 
 	public Luigi(int x, int y, int width, int height, Handler handler) {
-		super(x, y, width + 25, height, handler, Images.luigiSmallWalkRight[0]
+		super(x, y, width , height, handler, Images.luigiSmallWalkRight[0]
 				,new Animation(175,Images.luigiSmallWalkLeft)
 				, new Animation(175,Images.luigiSmallWalkRight)
 				, new Animation(150,Images.luigiBigWalkLeft)
@@ -26,7 +26,7 @@ public class Luigi extends Player{
 			this.height+=8;
 			setDimension(new Dimension(width, this.height));
 		}
-	}
+	} 
 	@Override
 	public void tick(){
 		if(!grabbed) {

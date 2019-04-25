@@ -113,7 +113,7 @@ public class Player extends BaseDynamicEntity {
 				jumpcounter = 0;
 
 			}
-			if (brick instanceof BoundBlock) {
+			if (brick instanceof RaceBlock) {
 				if(SelectionState.multiP) {
 					if (marioBottomBounds.intersects(brickTopBounds)) {
 						if(this instanceof Mario) {
