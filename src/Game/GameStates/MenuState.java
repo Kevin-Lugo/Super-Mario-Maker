@@ -110,58 +110,112 @@ public class MenuState extends State {
 	}
 
 	public void displayoptions() {
+		if(SelectionState.multiP) {
+			// New Map
+			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
+					(handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "New Map", () -> {
+						if (!handler.isInMap()) {
+							mode = "Menu";
+							initNew("New Map Creator", handler);
+						}
+					}, handler, Color.BLACK));
 
-		// New Map
-		uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
-				(handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "New Map", () -> {
-					if (!handler.isInMap()) {
-						mode = "Menu";
-						initNew("New Map Creator", handler);
-					}
-				}, handler, Color.BLACK));
+			// testMap1
+			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
+					handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Map 1", () -> {
+						if (!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.racingMap1, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler, Color.BLACK));
 
-		// testMap1
-		uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
-				handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Map 1", () -> {
-					if (!handler.isInMap()) {
-						mode = "Menu";
-						handler.setMap(MapBuilder.createMap(Images.testMap, handler));
-						State.setState(handler.getGame().gameState);
-					}
-				}, handler, Color.BLACK));
+			// testmap2
+			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
+					(handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
+						if (!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.testMaptwo, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler, Color.BLACK));
 
-		// testmap2
-		uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
-				(handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
-					if (!handler.isInMap()) {
-						mode = "Menu";
-						handler.setMap(MapBuilder.createMap(Images.testMaptwo, handler));
-						State.setState(handler.getGame().gameState);
-					}
-				}, handler, Color.BLACK));
-
-		// other
-		uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
-				(handler.getHeight() / 2) + (handler.getHeight() / 10) + (128), 128, 64, "Other", () -> {
-					if (!handler.isInMap()) {
-						mode = "Menu";
-						JFileChooser chooser = new JFileChooser("/maps");
-						FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG, & PNG Images", "jpg", "png");
-						chooser.setFileFilter(filter);
-						int returnVal = chooser.showOpenDialog(null);
-						if (returnVal == JFileChooser.APPROVE_OPTION) {
-							System.out.println(
-									"You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
-							try {
-								handler.setMap(MapBuilder.createMap(ImageIO.read(chooser.getSelectedFile()), handler));
-								State.setState(handler.getGame().gameState);
-							} catch (IOException e) {
-								e.printStackTrace();
+			// other
+			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
+					(handler.getHeight() / 2) + (handler.getHeight() / 10) + (128), 128, 64, "Other", () -> {
+						if (!handler.isInMap()) {
+							mode = "Menu";
+							JFileChooser chooser = new JFileChooser("/maps");
+							FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG, & PNG Images", "jpg", "png");
+							chooser.setFileFilter(filter);
+							int returnVal = chooser.showOpenDialog(null);
+							if (returnVal == JFileChooser.APPROVE_OPTION) {
+								System.out.println(
+										"You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
+								try {
+									handler.setMap(MapBuilder.createMap(ImageIO.read(chooser.getSelectedFile()), handler));
+									State.setState(handler.getGame().gameState);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
 							}
 						}
-					}
-				}, handler, Color.BLACK));
-		uiManager.addObjects(this.but);
+					}, handler, Color.BLACK));
+			uiManager.addObjects(this.but);
+		}
+		else {
+			// New Map
+			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
+					(handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "New Map", () -> {
+						if (!handler.isInMap()) {
+							mode = "Menu";
+							initNew("New Map Creator", handler);
+						}
+					}, handler, Color.BLACK));
+
+			// testMap1
+			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
+					handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Map 1", () -> {
+						if (!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.testMap, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler, Color.BLACK));
+
+			// testmap2
+			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
+					(handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
+						if (!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.testMaptwo, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler, Color.BLACK));
+
+			// other
+			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
+					(handler.getHeight() / 2) + (handler.getHeight() / 10) + (128), 128, 64, "Other", () -> {
+						if (!handler.isInMap()) {
+							mode = "Menu";
+							JFileChooser chooser = new JFileChooser("/maps");
+							FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG, & PNG Images", "jpg", "png");
+							chooser.setFileFilter(filter);
+							int returnVal = chooser.showOpenDialog(null);
+							if (returnVal == JFileChooser.APPROVE_OPTION) {
+								System.out.println(
+										"You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
+								try {
+									handler.setMap(MapBuilder.createMap(ImageIO.read(chooser.getSelectedFile()), handler));
+									State.setState(handler.getGame().gameState);
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
+							}
+						}
+					}, handler, Color.BLACK));
+			uiManager.addObjects(this.but);	
+		}
 
 	}
 
@@ -409,7 +463,7 @@ public class MenuState extends State {
 							"8 -> Piranha (Dark Purple)\n" +
 							"9 -> Note Block (Cyan)\n" +
 							"G -> Pipe (Gray)\n" +
-							"P -> Power Up Block (Pink)");
+					"P -> Power Up Block (Pink)");
 
 		} else if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && SelectionState.multiP) { // MENU FOR MULTIPLAYER
 			JOptionPane.showMessageDialog(display.getFrame(),
@@ -427,7 +481,7 @@ public class MenuState extends State {
 							"P -> Power Up Block (Pink)\n" + 
 							"G -> Pipe (Gray)\n" +
 							"R -> Race Block\n" +
-							"L -> Luigi (Green)");
+					"L -> Luigi (Green)");
 
 		}
 

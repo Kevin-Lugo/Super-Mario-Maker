@@ -114,7 +114,20 @@ public class Player extends BaseDynamicEntity {
 
 			}
 			if (brick instanceof BoundBlock) {
-				if (marioBottomBounds.intersects(brickTopBounds)) {
+				if(SelectionState.multiP) {
+					if (marioBottomBounds.intersects(brickTopBounds)) {
+						if(this instanceof Mario) {
+							Mario.wins = false;
+							State.setState(handler.getGame().winState);
+						}
+						else{
+							Mario.wins = true;
+							State.setState(handler.getGame().winState);
+						}
+					}
+				}
+				
+				else if (marioBottomBounds.intersects(brickTopBounds) && !SelectionState.multiP) {
 					State.setState(handler.getGame().gameOverState);
 				}
 			}
@@ -165,17 +178,6 @@ public class Player extends BaseDynamicEntity {
 						mario.setY(enemy.getY() - mario.getDimension().height + 1);
 						falling = false;
 						velY = 0;
-					}
-				}
-				if(enemy instanceof Piranha) {
-					if (marioBottomBounds.intersects(enemyTopBounds)) {
-						if (!isBig) {
-							handler.getMario().setHit(true);
-							State.setState(handler.getGame().gameOverState);
-						}
-						else {
-							isBig = false;
-						}
 					}
 				}
 			}
