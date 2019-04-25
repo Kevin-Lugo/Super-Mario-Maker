@@ -129,15 +129,22 @@ public class Player extends BaseDynamicEntity {
 
 		for (BaseDynamicEntity enemy : enemies) {
 			Rectangle enemyTopBounds = enemy.getTopBounds();
-			if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item)
-					&& !(enemy instanceof PowerUpBlock) && !(enemy instanceof Piranha)) {
+			if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item)&& !(enemy instanceof PowerUpBlock) && !(enemy instanceof Piranha)) {
 				if (!enemy.ded) {
+					if(!mario.isBig) {
+						if(enemy.getRightBounds().intersects(mario.getLeftBounds()) || enemy.getLeftBounds().intersects(mario.getRightBounds())) {
+							mario.setHit(true);
+						}
+					}
+					if(mario.isBig){
+						mario.isBig = false;
+					}
 					handler.getGame().getMusicHandler().playStomp();
+					enemy.kill();
+					falling = false;
+					velY = 0;
+					jumpcounter = 0;
 				}
-				enemy.kill();
-				falling = false;
-				velY = 0;
-				jumpcounter = 0;
 			}
 
 			if (enemy instanceof PowerUpBlock) {
@@ -231,13 +238,14 @@ public class Player extends BaseDynamicEntity {
 					if(SelectionState.multiP) {
 						State.setState(handler.getGame().winState);
 					}
-					State.setState(handler.getGame().gameOverState);
+					else {
+						State.setState(handler.getGame().gameOverState);
+					}
 				}
 				else {
-					isBig = false;
-					this.x += 5;
-					break;
+					mario.isBig = false;
 				}
+
 			}
 			if (enemy instanceof PowerUpBlock) {
 				if (marioBounds.intersects(enemyBounds)) {
