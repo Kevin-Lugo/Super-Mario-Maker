@@ -113,7 +113,7 @@ public class Player extends BaseDynamicEntity {
 				jumpcounter = 0;
 
 			}
-			if (brick instanceof RaceBlock) {
+			if (brick instanceof BoundBlock) {
 				if(SelectionState.multiP) {
 					if (marioBottomBounds.intersects(brickTopBounds)) {
 						if(this instanceof Mario) {
@@ -129,6 +129,21 @@ public class Player extends BaseDynamicEntity {
 
 				else if (marioBottomBounds.intersects(brickTopBounds) && !SelectionState.multiP) {
 					State.setState(handler.getGame().gameOverState);
+				}
+			}
+
+			if (brick instanceof RaceBlock) {
+				if(SelectionState.multiP) {
+					if (marioBottomBounds.intersects(brickTopBounds)) {
+						if(this instanceof Mario) {
+							Mario.wins = true;
+							State.setState(handler.getGame().winState);
+						}
+						else{
+							Mario.wins = false;
+							State.setState(handler.getGame().winState);
+						}
+					}
 				}
 			}
 			if (brick instanceof NoteBlock) {
@@ -161,12 +176,12 @@ public class Player extends BaseDynamicEntity {
 								State.setState(handler.getGame().gameOverState);
 							}
 						}
-
+					}
+					else if(isBig && (enemy.getRightBounds().intersects(mario.getLeftBounds()) || enemy.getLeftBounds().intersects(mario.getRightBounds()))){
+						this.isBig = false;
 					}
 				}
-				else if(mario.isBig){
-					mario.isBig = false;
-				}
+
 				handler.getGame().getMusicHandler().playStomp();
 				enemy.kill();
 				falling = false;
@@ -200,14 +215,14 @@ public class Player extends BaseDynamicEntity {
 			}
 			if (brick instanceof RaceBlock) {
 				if(this instanceof Mario) {
-					
+
 					if (marioTopBounds.intersects(brickBottomBounds)) {
 						Mario.wins = true;
 						State.setState(handler.getGame().winState);
 					}
 				}
 				else {
-					
+
 					if(marioTopBounds.intersects(brickBottomBounds)) {
 						Mario.wins = false;
 						State.setState(handler.getGame().winState);
@@ -269,8 +284,8 @@ public class Player extends BaseDynamicEntity {
 						State.setState(handler.getGame().gameOverState);
 					}
 				}
-				else {
-					mario.isBig = false;
+				else if (isBig){
+					this.isBig = false;
 				}
 
 			}
@@ -304,6 +319,11 @@ public class Player extends BaseDynamicEntity {
 				handler.getGame().getMusicHandler().playJump();
 				jumpcounter++;
 
+			}
+		}
+		else if (this instanceof Luigi) {
+			if(jumping) {
+				this.gravityAcc = 0.25;
 			}
 		}
 
