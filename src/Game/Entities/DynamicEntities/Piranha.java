@@ -17,8 +17,24 @@ public class Piranha extends BaseDynamicEntity {
 
 	@Override
 	public void tick(){
-		super.tick();
-		anim.tick();
+		 if(!ded && dedCounter==0) {
+	            super.tick();
+	            anim.tick();
+	            if (falling) {
+	                y = (int) (y + velY);
+	                velY = velY + gravityAcc;
+	                checkFalling();
+	            }
+	            checkHorizontal();
+	        }else if(ded&&dedCounter==0){
+	            y++;
+	            height--;
+	            setDimension(new Dimension(width,height));
+	            if (height==0){
+	                dedCounter=1;
+	                y=-10000;
+	            }
+	        }
 	}
 	
 	public void kill() {
