@@ -71,7 +71,7 @@ public class Images {
 
 	public static BufferedImage testMap;
 	public static BufferedImage testMaptwo;
-	public static BufferedImage racingMap1;
+	public static BufferedImage HelloWorldMap;
 	public static BufferedImage MarioHeaven;
 	public static BufferedImage SuperWorld;
 
@@ -385,7 +385,7 @@ public class Images {
 			//maps
 			testMap = ImageIO.read(getClass().getResourceAsStream("/maps/testmap1.png"));
 			testMaptwo = ImageIO.read(getClass().getResourceAsStream("/maps/testmap2.png"));
-			racingMap1 = ImageIO.read(getClass().getResourceAsStream("/maps/Super Mario Race.png"));
+			HelloWorldMap = ImageIO.read(getClass().getResourceAsStream("/maps/Super Mario Race.png"));
 			MarioHeaven =  ImageIO.read(getClass().getResourceAsStream("/maps/Mario Heaven.png"));
 			SuperWorld =  ImageIO.read(getClass().getResourceAsStream("/maps/Super World.png"));
 

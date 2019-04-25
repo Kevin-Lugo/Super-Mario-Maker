@@ -122,10 +122,10 @@ public class MenuState extends State {
 
 			// testMap1
 			uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64,
-					handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Race Map", () -> {
+					handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Hello World", () -> {
 						if (!handler.isInMap()) {
 							mode = "Menu";
-							handler.setMap(MapBuilder.createMap(Images.racingMap1, handler));
+							handler.setMap(MapBuilder.createMap(Images.HelloWorldMap, handler));
 							State.setState(handler.getGame().gameState);
 						}
 					}, handler, Color.BLACK));
