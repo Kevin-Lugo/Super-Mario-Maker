@@ -140,7 +140,7 @@ public class Player extends BaseDynamicEntity {
 				falling = false;
 				velY = 0;
 				jumpcounter = 0;
-				
+				System.out.println("Jumping");
 			}
 
 		}
@@ -380,7 +380,7 @@ public class Player extends BaseDynamicEntity {
 
 		if (this instanceof Mario) {
 
-			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE) && jumping && jumpcounter <= 2) {
+			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE) && jumping && jumpcounter < 2) {
 				jumping = true;
 				velY = 10;
 				handler.getGame().getMusicHandler().playJump();
