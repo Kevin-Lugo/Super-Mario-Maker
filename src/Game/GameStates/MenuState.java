@@ -125,7 +125,7 @@ public class MenuState extends State {
 					handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Map 1", () -> {
 						if (!handler.isInMap()) {
 							mode = "Menu";
-							handler.setMap(MapBuilder.createMap(Images.racingMap1, handler));
+							handler.setMap(MapBuilder.createMap(Images.SuperWorld, handler));
 							State.setState(handler.getGame().gameState);
 						}
 					}, handler, Color.BLACK));
@@ -135,7 +135,7 @@ public class MenuState extends State {
 					(handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
 						if (!handler.isInMap()) {
 							mode = "Menu";
-							handler.setMap(MapBuilder.createMap(Images.testMaptwo, handler));
+							handler.setMap(MapBuilder.createMap(Images.racingMap1, handler));
 							State.setState(handler.getGame().gameState);
 						}
 					}, handler, Color.BLACK));

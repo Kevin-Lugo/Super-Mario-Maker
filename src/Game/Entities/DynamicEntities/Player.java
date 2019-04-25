@@ -200,13 +200,18 @@ public class Player extends BaseDynamicEntity {
 			}
 			if (brick instanceof RaceBlock) {
 				if(this instanceof Mario) {
-					Mario.wins = true;
+					
 					if (marioTopBounds.intersects(brickBottomBounds)) {
+						Mario.wins = true;
 						State.setState(handler.getGame().winState);
 					}
 				}
-				if(marioTopBounds.intersects(brickBottomBounds)) {
-					State.setState(handler.getGame().winState);
+				else {
+					
+					if(marioTopBounds.intersects(brickBottomBounds)) {
+						Mario.wins = false;
+						State.setState(handler.getGame().winState);
+					}
 				}
 			}
 		}
