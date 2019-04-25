@@ -25,7 +25,7 @@ public class MapBuilder {
 	public static int breakBlock = new Color(0,38,255).getRGB();
 	public static int misteryBlock = new Color(255,216,0).getRGB();
 	public static int powerUpBlock = new Color(255,105,180).getRGB();
-	public static int noteBlock = new Color(0,0,255).getRGB();
+	public static int noteBlock = new Color(51,255,255).getRGB();
 	public static int RaceBlock = new Color(100,100,100).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();

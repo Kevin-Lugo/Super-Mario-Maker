@@ -71,6 +71,7 @@ public class Images {
 
 	public static BufferedImage testMap;
 	public static BufferedImage testMaptwo;
+	public static BufferedImage racingMap1;
 
 	public static BufferedImage[] powerUpBlock;
 	public static BufferedImage breakBlock;
@@ -382,13 +383,14 @@ public class Images {
 			//maps
 			testMap = ImageIO.read(getClass().getResourceAsStream("/maps/testmap1.png"));
 			testMaptwo = ImageIO.read(getClass().getResourceAsStream("/maps/testmap2.png"));
+			racingMap1 = ImageIO.read(getClass().getResourceAsStream("/maps/Super Mario Race.png"));
 
 			//blocks
 			boundBlock = interactableSpriteSheet.crop(12,73,16,16);
 			misteryBlock = interactableSpriteSheet.crop(32,93,16,16);
 			surfaceBlock = interactableSpriteSheet.crop(112,93,16,16);
 			noteBlock = blockSpriteSheet.crop(52, 132, 18, 16);
-			RaceBlock = blockSpriteSheet.crop(130, 69, 18, 19);
+			RaceBlock = blockSpriteSheet.crop(132, 72, 18, 19);
 			//breakBlock = blockSpriteSheet.crop(272,112,16,16);
 			breakBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/brick.png"));
 
