@@ -264,7 +264,7 @@ public class MenuState extends State {
 			}
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
-						Images.tint(Images.Cursor, .72941176f, .02352941f, .83529412f), new Point(0, 0), "cursor1");
+						Images.tint(Images.Cursor, .2156862745098039f, 0, 0), new Point(0, 0), "cursor1");
 				display.getCanvas().setCursor(c);
 				colorSelected = MapBuilder.noteBlock;
 			}
@@ -338,7 +338,7 @@ public class MenuState extends State {
 			}
 			if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)) {
 				Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(
-						Images.tint(Images.Cursor, .72941176f, .02352941f, .83529412f), new Point(0, 0), "cursor1");
+						Images.tint(Images.Cursor, .2156862745098039f, 0, 0), new Point(0, 0), "cursor1");
 				display.getCanvas().setCursor(c);
 				colorSelected = MapBuilder.noteBlock;
 			}
@@ -407,7 +407,7 @@ public class MenuState extends State {
 							"6 -> Mushroom (Purple)\n" +
 							"7 -> Goomba (Brown)\n" + 
 							"8 -> Piranha (Dark Purple)\n" +
-							"9 -> Note Block (Blue)\n" +
+							"9 -> Note Block (Cyan)\n" +
 							"G -> Pipe (Gray)\n" +
 							"P -> Power Up Block (Pink)");
 
@@ -423,7 +423,7 @@ public class MenuState extends State {
 							"6 -> Mushroom (Purple)\n" + 
 							"7 -> Goomba (Brown)\n" + 
 							"8 -> Piranha (Gray)\n" +
-							"9 -> Note Block (Blue)\n" + 
+							"9 -> Note Block (Cyan)\n" + 
 							"P -> Power Up Block (Pink)\n" + 
 							"G -> Pipe (Gray)\n" +
 							"R -> Race Block\n" +
